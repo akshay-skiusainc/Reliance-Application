@@ -344,34 +344,34 @@
        
     _okaybutton.enabled=NO;
     _IAPVIEW.alpha=0.0;
-//    _priceFormatter = [[NSNumberFormatter alloc] init];
-//    [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-//    [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-//    [[RageIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-//        if (success) {
-//            NSLog(@"PPRO=%@",products);
-//            
-//            _products = [products copy];
-//            
-//            NSLog(@"PPRO=%@",_products);
-//            
-//            SKProduct * product = (SKProduct *) _products[0];
-//            //    cell.textLabel.text = product.localizedTitle;
-//            //    cell.textLabel.numberOfLines=5;
-//            NSLog(@"product==%@",product.localizedTitle);
-//            _okaybutton.enabled=YES;
-//            
-//            [_priceFormatter setLocale:product.priceLocale];
-//            
-//            
-//            _pricelabel.text = [NSString stringWithFormat:@"fee of . %@ \n to see become a premium member!",[_priceFormatter stringFromNumber:product.price]];
-//            NSLog(@"_products[buyB=%@", _pricelabel.text);
-//            
-//        }
-//    }];
-//    
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
+    _priceFormatter = [[NSNumberFormatter alloc] init];
+    [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [[RageIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            NSLog(@"PPRO=%@",products);
+            
+            _products = [products copy];
+            
+            NSLog(@"PPRO=%@",_products);
+            
+            SKProduct * product = (SKProduct *) _products[0];
+            //    cell.textLabel.text = product.localizedTitle;
+            //    cell.textLabel.numberOfLines=5;
+            NSLog(@"product==%@",product.localizedTitle);
+            _okaybutton.enabled=YES;
+            
+            [_priceFormatter setLocale:product.priceLocale];
+            
+            
+            _pricelabel.text = [NSString stringWithFormat:@"fee of . %@ \n to see become a premium member!",[_priceFormatter stringFromNumber:product.price]];
+            NSLog(@"_products[buyB=%@", _pricelabel.text);
+            
+        }
+    }];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
     //  NSString    *STR=[NSString stringWithFormat:@"com.skiusainc.RelianceEntertainment.Videos"];
     IAPVIEWScroller.contentSize = CGSizeMake(320, 500);
     
