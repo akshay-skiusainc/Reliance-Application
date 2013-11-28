@@ -132,7 +132,6 @@
 @property(nonatomic,retain) NSString *dirnote;
 @property(nonatomic,retain) NSString *emo;
 @property(nonatomic,retain) NSString *TransStatus;
-//@property(nonatomic,retain) NSString *Rel_TransStatus;
 
 
 @property(nonatomic,retain)NSDictionary *movieCategory;

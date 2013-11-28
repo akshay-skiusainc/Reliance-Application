@@ -11,11 +11,10 @@
 @interface R_AwardInner_4 : DatabaseClass<UIGestureRecognizerDelegate,UIScrollViewDelegate,UITextFieldDelegate>
 {
     UIScrollView *scroller;
-    UIImageView *awardImages[1000];       
+    UIImageView *awardImages[1000];
     UIImageView *detailAwardImage;
     int totalAwardWinner;
 }
-
 @property (retain, nonatomic)  NSString *movieId;
 @property (retain, nonatomic)  NSString *awardImage;
 @property (strong, nonatomic)  UIImageView *specificAward;
