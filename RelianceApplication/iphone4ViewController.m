@@ -670,79 +670,82 @@
             GlobalClass *obj=[GlobalClass getInstance];
             for (NSDictionary *actoAgent in bookmyshow)
             {
-                obj.bms_link= [actoAgent objectForKey:@"web_link"];
+                obj.rel_bms_link= [actoAgent objectForKey:@"web_link"];
                 
             }
-            obj.trailers = trailers;
-            obj.awardCat = award_cat;
-            obj.awardInfo = award_info;
-            obj.awardMovie = award_movie;
-            obj.movieCategory = movie_Category;
-            obj.moviedata = movie;
-            obj.str = interviewdata;
-            obj.onset = onsetdata;
-            obj.videolinks = videodata;
-            obj.Dwall = wallpaperdata;
-            obj.Bookmyshow = book;
-            obj.Feedback=feedback1;
-            obj.music=music;
-            obj.CNC=cnc;
-            obj.directorsNote=dirnote;
-            obj.category=category;
-            obj.BTS=BS_COVER;
-            obj.Banner = banner;
-            obj.appData=appData;
-            obj.productionImage = productionForCNC;
-            obj.groups = [json objectForKey:@"groups"];
-            obj.fbtoken=fbtoken;
-            obj.Notifications=notifications;
+            if(obj.rel_trailers == nil)
+            {
+                obj.rel_trailers = trailers;
+            }
+            obj.rel_awardCat = award_cat;
+            obj.rel_awardInfo = award_info;
+            obj.rel_awardMovie = award_movie;
+            obj.rel_movieCategory = movie_Category;
+            obj.rel_moviedata = movie;
+            obj.rel_str = interviewdata;
+            obj.rel_onset = onsetdata;
+            obj.rel_videolinks = videodata;
+            obj.rel_Dwall = wallpaperdata;
+            obj.rel_Bookmyshow = book;
+            obj.rel_Feedback=feedback1;
+            obj.rel_music=music;
+            obj.rel_CNC=cnc;
+            obj.rel_directorsNote=dirnote;
+            obj.rel_category=category;
+            obj.rel_BTS=BS_COVER;
+            obj.rel_Banner = banner;
+            obj.rel_appData=appData;
+            obj.rel_productionImage = productionForCNC;
+            obj.rel_groups = [json objectForKey:@"groups"];
+            obj.rel_fbtoken=fbtoken;
+            obj.rel_Notifications=notifications;
             //  obj.Contests=Contests;
-            
+            //
             for (NSDictionary *actoAgent in dirnote)
             {
-                obj.dirnote= [actoAgent objectForKey:@"image"];
+                obj.rel_dirnote= [actoAgent objectForKey:@"image"];
                 
             }
             
             
             for (NSDictionary *actoAgent in iapp)
             {
-                obj.IAPProduct1= [actoAgent objectForKey:@"wall_key"];
-                NSLog(@"IAPProduct1=%@",obj.IAPProduct1);
+                obj.rel_IAPProduct1= [actoAgent objectForKey:@"wall_key"];
+                NSLog(@"IAPProduct1=%@",obj.rel_IAPProduct1);
                 
             }
             
             
             for (NSDictionary *actoAgent in sharetext)
             {
-                obj.videosharetext= [actoAgent objectForKey:@"trailer"];
-                NSLog(@"trailer=%@",obj.videosharetext);
+                obj.rel_videosharetext= [actoAgent objectForKey:@"trailer"];
+                NSLog(@"trailer=%@",obj.rel_videosharetext);
                 
             }
             
             for (NSDictionary *actoAgent in sharetext)
             {
-                obj.moviesharetxt= [actoAgent objectForKey:@"movie_catalogue"];
-                NSLog(@"trailer=%@",obj.moviesharetxt);
+                obj.rel_moviesharetxt= [actoAgent objectForKey:@"movie_catalogue"];
+                NSLog(@"trailer=%@",obj.rel_moviesharetxt);
                 
             }
 
             for (NSDictionary *actoAgent in sharetext)
             {
-                obj.wallpapers= [actoAgent objectForKey:@"wallpapers"];
-                NSLog(@"wallpapers=%@",obj.wallpapers);
+                obj.rel_wallpapers= [actoAgent objectForKey:@"wallpapers"];
+                NSLog(@"wallpapers=%@",obj.rel_wallpapers);
                 
             }
             for (NSDictionary *actoAgent in sharetext)
             {
-                obj.behindscene_video= [actoAgent objectForKey:@"shortscene"];
-                NSLog(@"shortscene=%@",obj.behindscene_video);
+                obj.rel_behindscene_video= [actoAgent objectForKey:@"shortscene"];
+                NSLog(@"shortscene=%@",obj.rel_behindscene_video);
                 
             }
             
             for (NSDictionary *actoAgent in sharetext)
             {
-                obj.behindscene_images= [actoAgent objectForKey:@"behindscene_images"];
+                obj.rel_behindscene_images= [actoAgent objectForKey:@"behindscene_images"];
                 NSLog(@"behindscene_images=%@",obj.behindscene_images);
                 
             }
@@ -758,37 +761,37 @@
             
             for (NSDictionary *actoAgent in sharetext)
             {
-                obj.twitter= [actoAgent objectForKey:@"twitter"];
-                NSLog(@"twitter=%@",obj.twitter);
+                obj.rel_twitter= [actoAgent objectForKey:@"twitter"];
+                NSLog(@"twitter=%@",obj.rel_twitter);
                 
             }
             
             for (NSDictionary *actoAgent in sharetext)
             {
-                obj.facebook= [actoAgent objectForKey:@"facebook"];
-                NSLog(@"facebook=%@",obj.facebook);
+                obj.rel_facebook= [actoAgent objectForKey:@"facebook"];
+                NSLog(@"facebook=%@",obj.rel_facebook);
                 
             }
             
             for (NSDictionary *actoAgent in sharetext)
             {
-                obj.mug= [actoAgent objectForKey:@"mug"];
-                NSLog(@"mug=%@",obj.mug);
+                obj.rel_mug= [actoAgent objectForKey:@"mug"];
+                NSLog(@"mug=%@",obj.rel_mug);
                 
             }
             
             
             for (NSDictionary *actoAgent in sharetext)
             {
-                obj.Tshirt= [actoAgent objectForKey:@"Tshirt"];
-                NSLog(@"Tshirt=%@",obj.Tshirt);
+                obj.rel_Tshirt= [actoAgent objectForKey:@"Tshirt"];
+                NSLog(@"Tshirt=%@",obj.rel_Tshirt);
                 
             }
             
             for (NSDictionary *actoAgent in sharetext)
             {
-                obj.movie_poster= [actoAgent objectForKey:@"movie_poster"];
-                NSLog(@"movie_poster=%@",obj.movie_poster);
+                obj.rel_movie_poster= [actoAgent objectForKey:@"movie_poster"];
+                NSLog(@"movie_poster=%@",obj.rel_movie_poster);
                 
             }
             
