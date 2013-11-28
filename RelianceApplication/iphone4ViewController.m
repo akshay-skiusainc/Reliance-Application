@@ -666,7 +666,7 @@
             NSDictionary *award_movie = [json objectForKey:@"award_movie"];
             NSDictionary *movie_Category = [json objectForKey:@"movie_cat"];
             NSDictionary *award_info = [json objectForKey:@"award_info"];
-            
+            ///////
             GlobalClass *obj=[GlobalClass getInstance];
             for (NSDictionary *actoAgent in bookmyshow)
             {
