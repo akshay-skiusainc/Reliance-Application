@@ -90,210 +90,231 @@
     
     
 	
-    GlobalClass *obj=[GlobalClass getInstance];
-    
-	NSString*   post = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/fetch_all_rel_ios.php?deviceno=%@",obj.dev];
+    NSLog(@"iphone4viewcontroller called ***************************");
 	
-	
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:post] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
-	
-	
-	//  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://110.175.19.95/SCMIpadDemoWebApp/CustomerList.aspx?username=02&BeginRowNo=0&LastRowNo=10"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5.0];
-	
-	[request setHTTPMethod:@"GET"];
-	//[request setValue:@"application/x-www-form-urlencodeQBCd" forHTTPHeaderField:@"Current-Type"];
-	NSError *errorReturned = nil;
-	
-	
-	
-	
-	
-	if (errorReturned) {
-		NSLog(@"errorReturned=%@",errorReturned);
-		
-		
-		UIAlertView* alertBox = [[ UIAlertView alloc]initWithTitle:@"Network Error" message:@"Network Not Connected" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Retry", nil ];
-		//alertBox.tag=3;
-		alertBox.delegate=self;
-		[alertBox show];
-		
-		
-		// Handle error.
-	}
-	else
-	{
-		
-		
-		NSLog(@"POSTING=%@",post);
-		
-		
-		
-		NSError *errorReturned = nil;
-		NSURLResponse *theResponse =[[NSURLResponse alloc]init];
-		NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&theResponse error:&errorReturned];
-		
+	GlobalClass *obj=[GlobalClass getInstance];
+    if ([obj.REL_DATA isEqualToString:@"0"]) {
         
-        if (!errorReturned) {
+        NSString*   post = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/fetch_all_rel_ios.php?deviceno=%@",obj.dev];
+        
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:post] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+        
+        
+        //  NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://110.175.19.95/SCMIpadDemoWebApp/CustomerList.aspx?username=02&BeginRowNo=0&LastRowNo=10"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5.0];
+        
+        [request setHTTPMethod:@"GET"];
+        //[request setValue:@"application/x-www-form-urlencodeQBCd" forHTTPHeaderField:@"Current-Type"];
+        NSError *errorReturned = nil;
+        
+        
+        
+        
+        
+        if (errorReturned) {
             NSLog(@"errorReturned=%@",errorReturned);
             
             
-            NSError* error;
-            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data //1
-                                                                 options:kNilOptions
-                                                                   error:&error];
+            UIAlertView* alertBox = [[ UIAlertView alloc]initWithTitle:@"Network Error" message:@"Network Not Connected" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Retry", nil ];
+            //alertBox.tag=3;
+            alertBox.delegate=self;
+            [alertBox show];
+            
+            
+            // Handle error.
+        }
+        else
+        {
+            
+            
+            NSLog(@"POSTING=%@",post);
             
             
             
-            NSLog(@" view controller json=%@",json);
+            NSError *errorReturned = nil;
+            NSURLResponse *theResponse =[[NSURLResponse alloc]init];
+            NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&theResponse error:&errorReturned];
             
             
-            NSDictionary* interviewdata = [json objectForKey:@"bs_video"]; //2
-            
-            NSDictionary* onsetdata = [json objectForKey:@"bs_photo"]; //2
-            
-            NSDictionary* videodata = [json objectForKey:@"shortscenes"]; //2
-            NSDictionary* trailers = [json objectForKey:@"trailers"];
-            
-            
-            NSDictionary* wallpaperdata = [json objectForKey:@"wallpapers"]; //2
-            NSDictionary* book = [json objectForKey:@"bookmyshow"]; //2
-            NSDictionary* feedback1 = [json objectForKey:@"feedback"]; //2
-            NSDictionary* music = [json objectForKey:@"music"]; //2
-            NSDictionary* notifications = [json objectForKey:@"notifications"]; //2
-            NSDictionary* cnc = [json objectForKey:@"castncrew"];
-            NSDictionary* dirnote = [json objectForKey:@"directors_note"];
-            NSDictionary    *category = [json objectForKey:@"cat_items"];
-            NSDictionary    *BS_COVER = [json objectForKey:@"bs_cover"];
-            NSDictionary    *banner = [json objectForKey:@"banner"];
-            NSDictionary *appData = [json objectForKey:@"app_data"];
-            NSDictionary *productionForCNC = [json objectForKey:@"production"];
-            NSDictionary *sharetext = [json objectForKey:@"share_text"];
-            NSDictionary *fbtoken = [json objectForKey:@"facebook_feed"];
-            NSDictionary *iapp = [json objectForKey:@"arr_ios_keys"];
-            NSDictionary *bookmyshow = [json objectForKey:@"bookmyshow"];
-            
-            
-            GlobalClass *obj=[GlobalClass getInstance];
-            for (NSDictionary *actoAgent in bookmyshow)
-            {
-                obj.bms_link= [actoAgent objectForKey:@"web_link"];
+            if (!errorReturned) {
+                NSLog(@"errorReturned=%@",errorReturned);
+                
+                
+                NSError* error;
+                NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data //1
+                                                                     options:kNilOptions
+                                                                       error:&error];
+                
+                
+                
+                NSLog(@"json=%@",json);
+                
+                
+                NSDictionary* interviewdata = [json objectForKey:@"bs_video"]; //2
+                
+                NSDictionary* onsetdata = [json objectForKey:@"bs_photo"]; //2
+                
+                NSDictionary* videodata = [json objectForKey:@"shortscenes"]; //2
+                
+                
+                NSDictionary* wallpaperdata = [json objectForKey:@"wallpapers"]; //2
+                NSDictionary* book = [json objectForKey:@"bookmyshow"]; //2
+                NSDictionary* feedback1 = [json objectForKey:@"feedback"]; //2
+                NSDictionary* music = [json objectForKey:@"music"]; //2
+                NSDictionary* notifications = [json objectForKey:@"notifications"]; //2
+                NSDictionary* cnc = [json objectForKey:@"castncrew"];
+                NSDictionary* dirnote = [json objectForKey:@"directors_note"];
+                NSDictionary    *category = [json objectForKey:@"cat_items"];
+                NSDictionary    *BS_COVER = [json objectForKey:@"bs_cover"];
+                NSDictionary    *banner = [json objectForKey:@"banner"];
+                NSDictionary *appData = [json objectForKey:@"app_data"];
+                NSDictionary *productionForCNC = [json objectForKey:@"production"];
+                NSDictionary *sharetext = [json objectForKey:@"share_text"];
+                NSDictionary *fbtoken = [json objectForKey:@"facebook_feed"];
+                NSDictionary *iapp = [json objectForKey:@"arr_ios_keys"];
+                
+                NSDictionary *bookmyshow = [json objectForKey:@"bookmyshow"];
+                NSDictionary *movie = [json objectForKey:@"movie"];
+                NSDictionary *trailers = [json objectForKey:@"trailers"];
+                NSDictionary *award_cat = [json objectForKey:@"award_cat"];
+                NSDictionary *award_movie = [json objectForKey:@"award_movie"];
+                NSDictionary *movie_Category = [json objectForKey:@"movie_cat"];
+                NSDictionary *award_info = [json objectForKey:@"award_info"];
+                ///////
+                GlobalClass *obj=[GlobalClass getInstance];
+                for (NSDictionary *actoAgent in bookmyshow)
+                {
+                    obj.rel_bms_link= [actoAgent objectForKey:@"web_link"];
+                    
+                }
+                
+                obj.rel_trailers = trailers;
+                obj.rel_awardCat = award_cat;
+                obj.rel_awardInfo = award_info;
+                obj.rel_awardMovie = award_movie;
+                obj.rel_movieCategory = movie_Category;
+                obj.rel_moviedata = movie;
+                obj.rel_str = interviewdata;
+                obj.rel_onset = onsetdata;
+                obj.rel_videolinks = videodata;
+                obj.rel_Dwall = wallpaperdata;
+                obj.rel_Bookmyshow = book;
+                obj.rel_Feedback=feedback1;
+                obj.rel_music=music;
+                obj.rel_CNC=cnc;
+                obj.rel_directorsNote=dirnote;
+                obj.rel_category=category;
+                obj.rel_BTS=BS_COVER;
+                obj.rel_Banner = banner;
+                obj.rel_appData=appData;
+                obj.rel_productionImage = productionForCNC;
+                obj.rel_groups = [json objectForKey:@"groups"];
+                obj.rel_fbtoken=fbtoken;
+                obj.rel_Notifications=notifications;
+                //  obj.Contests=Contests;
+                //
+                for (NSDictionary *actoAgent in dirnote)
+                {
+                    obj.rel_dirnote= [actoAgent objectForKey:@"image"];
+                    
+                }
+                
+                
+                for (NSDictionary *actoAgent in iapp)
+                {
+                    obj.IAPProduct1= [actoAgent objectForKey:@"wall_key"];
+                    NSLog(@"IAPProduct1=%@",obj.IAPProduct1);
+                    
+                }
+                
+                
+                for (NSDictionary *actoAgent in sharetext)
+                {
+                    obj.rel_videosharetext= [actoAgent objectForKey:@"trailer"];
+                    NSLog(@"trailer=%@",obj.rel_videosharetext);
+                    
+                }
+                
+                for (NSDictionary *actoAgent in sharetext)
+                {
+                    obj.rel_moviesharetxt= [actoAgent objectForKey:@"movie_catalogue"];
+                    NSLog(@"trailer=%@",obj.rel_moviesharetxt);
+                    
+                }
+                
+                for (NSDictionary *actoAgent in sharetext)
+                {
+                    obj.rel_wallpapers= [actoAgent objectForKey:@"wallpapers"];
+                    NSLog(@"wallpapers=%@",obj.rel_wallpapers);
+                    
+                }
+                for (NSDictionary *actoAgent in sharetext)
+                {
+                    obj.rel_behindscene_video= [actoAgent objectForKey:@"shortscene"];
+                    NSLog(@"shortscene=%@",obj.rel_behindscene_video);
+                    
+                }
+                
+                for (NSDictionary *actoAgent in sharetext)
+                {
+                    obj.rel_behindscene_images= [actoAgent objectForKey:@"behindscene_images"];
+                    NSLog(@"behindscene_images=%@",obj.behindscene_images);
+                    
+                }
+                
+                //            for (NSDictionary *actoAgent in sharetext)
+                //            {
+                //                obj.newsshare= [actoAgent objectForKey:@"news"];
+                //                NSLog(@"newsshare=%@",obj.newsshare);
+                //
+                //            }
+                
+                
+                
+                for (NSDictionary *actoAgent in sharetext)
+                {
+                    obj.rel_twitter= [actoAgent objectForKey:@"twitter"];
+                    NSLog(@"twitter=%@",obj.rel_twitter);
+                    
+                }
+                
+                for (NSDictionary *actoAgent in sharetext)
+                {
+                    obj.rel_facebook= [actoAgent objectForKey:@"facebook"];
+                    NSLog(@"facebook=%@",obj.rel_facebook);
+                    
+                }
+                
+                for (NSDictionary *actoAgent in sharetext)
+                {
+                    obj.rel_mug= [actoAgent objectForKey:@"mug"];
+                    NSLog(@"mug=%@",obj.rel_mug);
+                    
+                }
+                
+                
+                for (NSDictionary *actoAgent in sharetext)
+                {
+                    obj.rel_Tshirt= [actoAgent objectForKey:@"Tshirt"];
+                    NSLog(@"Tshirt=%@",obj.rel_Tshirt);
+                    
+                }
+                
+                for (NSDictionary *actoAgent in sharetext)
+                {
+                    obj.rel_movie_poster= [actoAgent objectForKey:@"movie_poster"];
+                    NSLog(@"movie_poster=%@",obj.rel_movie_poster);
+                    
+                }
+                
+                
+                
+                
+                GlobalClass *OBJ=[GlobalClass getInstance];
+                OBJ.fetchall=@"1";
+                
                 
             }
-            obj.trailers = trailers;
-            
-            obj.str = interviewdata;
-            obj.onset = onsetdata;
-            obj.videolinks = videodata;
-            obj.xtraDictionary = trailers;
-            NSLog(@"obj.trailers in viewController == %@",obj.trailers);
-            obj.Dwall = wallpaperdata;
-            obj.Bookmyshow = book;
-            obj.Feedback=feedback1;
-            obj.music=music;
-            obj.CNC=cnc;
-            obj.directorsNote=dirnote;
-            obj.category=category;
-            obj.BTS=BS_COVER;
-            obj.Banner = banner;
-            obj.appData=appData;
-            obj.productionImage = productionForCNC;
-            obj.groups = [json objectForKey:@"groups"];
-            obj.fbtoken=fbtoken;
-            obj.Notifications=notifications;
-            //  obj.Contests=Contests;
-            
-            for (NSDictionary *actoAgent in dirnote)
-            {
-                obj.dirnote= [actoAgent objectForKey:@"image"];
-                
-            }
-            for (NSDictionary *actoAgent in iapp)
-            {
-                obj.IAPProduct1= [actoAgent objectForKey:@"wall_key"];
-                NSLog(@"IAPProduct1=%@",obj.IAPProduct1);
-                
-            }
-            
-            
-            for (NSDictionary *actoAgent in sharetext)
-            {
-                obj.videosharetext= [actoAgent objectForKey:@"videos"];
-                NSLog(@"sharetext=%@",obj.videosharetext);
-                
-            }
-            
-            for (NSDictionary *actoAgent in sharetext)
-            {
-                obj.wallpapers= [actoAgent objectForKey:@"wallpapers"];
-                NSLog(@"sharetext=%@",obj.wallpapers);
-                
-            }
-            for (NSDictionary *actoAgent in sharetext)
-            {
-                obj.behindscene_video= [actoAgent objectForKey:@"behindscene_video"];
-                NSLog(@"behindscene_video=%@",obj.behindscene_video);
-                
-            }
-            
-            for (NSDictionary *actoAgent in sharetext)
-            {
-                obj.behindscene_images= [actoAgent objectForKey:@"behindscene_images"];
-                NSLog(@"behindscene_images=%@",obj.behindscene_images);
-                
-            }
-            
-            for (NSDictionary *actoAgent in sharetext)
-            {
-                obj.newsshare= [actoAgent objectForKey:@"news"];
-                NSLog(@"newsshare=%@",obj.newsshare);
-                
-            }
-            
-            
-            
-            for (NSDictionary *actoAgent in sharetext)
-            {
-                obj.twitter= [actoAgent objectForKey:@"twitter"];
-                NSLog(@"twitter=%@",obj.twitter);
-                
-            }
-            
-            for (NSDictionary *actoAgent in sharetext)
-            {
-                obj.facebook= [actoAgent objectForKey:@"facebook"];
-                NSLog(@"facebook=%@",obj.facebook);
-                
-            }
-            
-            for (NSDictionary *actoAgent in sharetext)
-            {
-                obj.mug= [actoAgent objectForKey:@"mug"];
-                NSLog(@"mug=%@",obj.mug);
-                
-            }
-            
-            
-            for (NSDictionary *actoAgent in sharetext)
-            {
-                obj.Tshirt= [actoAgent objectForKey:@"Tshirt"];
-                NSLog(@"Tshirt=%@",obj.Tshirt);
-                
-            }
-            
-            for (NSDictionary *actoAgent in sharetext)
-            {
-                obj.movie_poster= [actoAgent objectForKey:@"movie_poster"];
-                NSLog(@"movie_poster=%@",obj.movie_poster);
-                
-            }
-            
-            
-            self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg.jpg"]];
-            
-            
-            GlobalClass *OBJ=[GlobalClass getInstance];
-            OBJ.fetchall=@"1";
-            
             
         }
     }

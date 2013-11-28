@@ -14,6 +14,8 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import "JSON.h"
 #import <Socialize/Socialize.h>
+#import "RageIAPHelper.h"
+#import <StoreKit/StoreKit.h>
 
 @interface R_OpenMovie_4 : DatabaseClass<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,UIScrollViewDelegate,SocializeActionBarDelegate>
 {
@@ -61,12 +63,25 @@
     NSString    *mailsharetext;
     int m;
     
+    NSArray *_products;
+    NSNumberFormatter * _priceFormatter;
+    NSTimer *_timer;
+
+    
 }
 @property (weak, nonatomic) IBOutlet UIImageView *Play_video_nav;
 @property (nonatomic, retain) UIButton *faceBookBtn;
 @property (nonatomic, retain) UIButton *twitterBtn;
 @property (nonatomic, retain) UIButton *emailBtn;
 
+@property (weak, nonatomic) IBOutlet UIView *IAPVIEW;
+@property (weak, nonatomic) IBOutlet UILabel *pricelabel;
+@property (strong, nonatomic) IBOutlet UIButton *cancelbutton;
+@property (strong, nonatomic) IBOutlet UIButton *okaybutton;
+@property(nonatomic,strong) IBOutlet UIScrollView *IAPVIEWScroller;
+- (IBAction)RESTORE:(id)sender;
+-(IBAction)IAPCANCELED;
+-(IBAction)IAPCALLED;
 
 @property (nonatomic, retain) ACAccountStore *accountStore;
 @property (nonatomic, retain) ACAccount *facebookAccount;
