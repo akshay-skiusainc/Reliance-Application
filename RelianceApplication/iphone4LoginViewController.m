@@ -364,6 +364,7 @@
                     NSLog(@"query=%@",insertSQL);
                     [self saveData:insertSQL];
                     NSUserDefaults *setUserDefaults=[NSUserDefaults standardUserDefaults];
+                    [setUserDefaults setInteger:2 forKey:@"fbSwitch"];
                     [setUserDefaults setInteger:1 forKey:@"twtSwitch"];
 
                     _Email1.text = name;
@@ -668,7 +669,9 @@
         NSString *insertSQL = [NSString stringWithFormat: @"INSERT INTO USER (ID, NAME ,  PHONE , EMAIL , USERNAME,  IMAGE ) VALUES (\"%@\",\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",@"1", _Email1.text, _Number.text, _Email1.text, @"",nil];
         NSLog(@"query=%@",insertSQL);
         [self saveData:insertSQL];
-        
+        NSUserDefaults *setUserDefaults=[NSUserDefaults standardUserDefaults];
+        [setUserDefaults setInteger:2 forKey:@"fbSwitch"];
+        [setUserDefaults setInteger:2 forKey:@"twtSwitch"];
         
 	}
     
@@ -1779,6 +1782,7 @@
         [self saveData:insertSQL];
         NSUserDefaults *setUserDefaults=[NSUserDefaults standardUserDefaults];
         [setUserDefaults setInteger:1 forKey:@"fbSwitch"];
+        [setUserDefaults setInteger:2 forKey:@"twtSwitch"];
 
         
         

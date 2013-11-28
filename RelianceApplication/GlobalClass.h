@@ -132,7 +132,6 @@
 @property(nonatomic,retain) NSString *dirnote;
 @property(nonatomic,retain) NSString *emo;
 @property(nonatomic,retain) NSString *TransStatus;
-//@property(nonatomic,retain) NSString *Rel_TransStatus;
 
 
 @property(nonatomic,retain)NSDictionary *movieCategory;
@@ -171,8 +170,43 @@
 
 
 
+@property(nonatomic,retain)NSDictionary *rel_bms_link;
+@property(nonatomic,retain)NSDictionary *rel_trailers;
+@property(nonatomic,retain)NSDictionary *rel_awardCat;
+@property(nonatomic,retain)NSDictionary *rel_awardInfo;
+@property(nonatomic,retain)NSDictionary *rel_awardMovie;
+@property(nonatomic,retain)NSDictionary *rel_movieCategory;
+@property(nonatomic,retain)NSDictionary *rel_moviedata;
+@property(nonatomic,retain)NSDictionary *rel_str;
+@property(nonatomic,retain)NSDictionary *rel_onset;
 
-
+@property(nonatomic,retain)NSDictionary *rel_videolinks;
+@property(nonatomic,retain)NSDictionary *rel_Dwall;
+@property(nonatomic,retain)NSDictionary *rel_Bookmyshow;
+@property(nonatomic,retain)NSDictionary *rel_Feedback;
+@property(nonatomic,retain)NSDictionary *rel_music;
+@property(nonatomic,retain)NSDictionary *rel_CNC;
+@property(nonatomic,retain)NSDictionary *rel_directorsNote;
+@property(nonatomic,retain)NSDictionary *rel_category;
+@property(nonatomic,retain)NSDictionary *rel_BTS;
+@property(nonatomic,retain)NSDictionary *rel_Banner;
+@property(nonatomic,retain)NSDictionary *rel_appData;
+@property(nonatomic,retain)NSDictionary *rel_productionImage;
+@property(nonatomic,retain)NSDictionary *rel_groups;
+@property(nonatomic,retain)NSDictionary *rel_fbtoken;
+@property(nonatomic,retain)NSDictionary *rel_Notifications;
+@property(nonatomic,retain)NSDictionary *rel_dirnote;
+@property(nonatomic,retain)NSDictionary *rel_IAPProduct1;
+@property(nonatomic,retain)NSDictionary *rel_videosharetext;
+@property(nonatomic,retain)NSDictionary *rel_moviesharetxt;
+@property(nonatomic,retain)NSDictionary *rel_wallpapers;
+@property(nonatomic,retain)NSDictionary *rel_behindscene_video;
+@property(nonatomic,retain)NSDictionary *rel_behindscene_images;
+@property(nonatomic,retain)NSDictionary *rel_twitter;
+@property(nonatomic,retain)NSDictionary *rel_facebook;
+@property(nonatomic,retain)NSDictionary *rel_mug;
+@property(nonatomic,retain)NSDictionary *rel_Tshirt;
+@property(nonatomic,retain)NSDictionary *rel_movie_poster;
 
 +(GlobalClass*)getInstance; 
 +(GlobalClass *)getCheck;    
