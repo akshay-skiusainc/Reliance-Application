@@ -207,6 +207,11 @@
 @property(nonatomic,retain)NSDictionary *rel_mug;
 @property(nonatomic,retain)NSDictionary *rel_Tshirt;
 @property(nonatomic,retain)NSDictionary *rel_movie_poster;
+@property(nonatomic,retain)NSDictionary *rel_contestData;
+@property(nonatomic,retain)NSDictionary *rel_contestHeader;
+@property(nonatomic,retain)NSDictionary *rel_contest_bg;
+@property(nonatomic,retain)NSDictionary *rel_contest_btn;
+@property(nonatomic,retain)NSDictionary *rel_FBSTATUS;
 
 +(GlobalClass*)getInstance; 
 +(GlobalClass *)getCheck;    

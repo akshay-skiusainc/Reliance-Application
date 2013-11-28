@@ -446,14 +446,14 @@
 -(void)getdata
 {
 	GlobalClass *obj=[GlobalClass getInstance];
-	NSLog(@"ddata=%@",obj.category);
+	NSLog(@"ddata=%@",obj.rel_category);
 	
     int i=0;
     
     
     
     
-    for (NSDictionary *actoAgent in obj.category)
+    for (NSDictionary *actoAgent in obj.rel_category)
 	{
         
         data1[i]= [actoAgent objectForKey:@"cat_img"];
@@ -472,10 +472,10 @@
     
     
     
-	NSLog(@"bannerData=%@",obj.Banner);
+	NSLog(@"bannerData=%@",obj.rel_Banner);
 	
 	int j=0;
-	for (NSDictionary *actoAgent in obj.Banner)
+	for (NSDictionary *actoAgent in obj.rel_Banner)
 	{
         
         //        data11[j]= [actoAgent objectForKey:@"banner_iphone4_img_link"];

@@ -651,9 +651,9 @@
     
     NSLog(@"GetData Called *****");
 	GlobalClass *obj=[GlobalClass getInstance];
-	NSLog(@"ddata=%@",obj.trailers);
+	NSLog(@"ddata=%@",obj.rel_trailers);
   	int i=0;
-	for (NSDictionary *actoAgent in obj.trailers)
+	for (NSDictionary *actoAgent in obj.rel_trailers)
 	{
 		data1[i]= [actoAgent objectForKey:@"trail_video"];
 		NSLog(@"trail_video=%@",data1[i]);
@@ -706,7 +706,7 @@
     
     int j=0;
     
-    for (NSDictionary *actoAgent in obj.Dwall)
+    for (NSDictionary *actoAgent in obj.rel_Dwall)
         
     {
         
@@ -1775,17 +1775,17 @@
     
    
     
-    NSLog(@"images=%@",obj.wallpapers);
+    NSLog(@"images=%@",obj.rel_wallpapers);
     
     
     
-    fbsharetext = [obj.wallpapers objectForKey:@"fb_share"];
+    fbsharetext = [obj.rel_wallpapers objectForKey:@"fb_share"];
     
     NSLog(@"fb_share=%@",fbsharetext);
     
     
     
-    twtsharetext = [obj.wallpapers objectForKey:@"twitter_share"];
+    twtsharetext = [obj.rel_wallpapers objectForKey:@"twitter_share"];
     
     NSLog(@"twitter_share=%@",twtsharetext);
     
@@ -1793,7 +1793,7 @@
     
     
     
-    mailsharesub = [obj.wallpapers objectForKey:@"email_subject"];
+    mailsharesub = [obj.rel_wallpapers objectForKey:@"email_subject"];
     
     NSLog(@"email_subject=%@",mailsharesub);
     
@@ -1801,7 +1801,7 @@
     
     
     
-    mailsharetext = [obj.wallpapers objectForKey:@"email_share"];
+    mailsharetext = [obj.rel_wallpapers objectForKey:@"email_share"];
     
     NSLog(@"email_share=%@",mailsharetext);
     
@@ -1809,18 +1809,18 @@
     if(check ==0)
     {
       
-            fbsharetext = [obj.videosharetext objectForKey:@"fb_share"];
+            fbsharetext = [obj.rel_videosharetext objectForKey:@"fb_share"];
             NSLog(@"fb_share=%@",fbsharetext);
             
-            twtsharetext = [obj.videosharetext objectForKey:@"twitter_share"];
+            twtsharetext = [obj.rel_videosharetext objectForKey:@"twitter_share"];
             NSLog(@"twitter_share=%@",twtsharetext);
             
             
-            mailsharesub = [obj.videosharetext objectForKey:@"email_subject"];
+            mailsharesub = [obj.rel_videosharetext objectForKey:@"email_subject"];
             NSLog(@"email_subject=%@",mailsharesub);
             
             
-            mailsharetext = [obj.videosharetext objectForKey:@"email_share"];
+            mailsharetext = [obj.rel_videosharetext objectForKey:@"email_share"];
             NSLog(@"email_share=%@",mailsharetext);
             
    

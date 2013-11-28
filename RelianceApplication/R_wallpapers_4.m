@@ -938,14 +938,14 @@
     
     GlobalClass *obj=[GlobalClass getInstance];
     
-    NSLog(@"images=%@",obj.Dwall);
+    NSLog(@"images=%@",obj.rel_Dwall);
     
     [_activictyIndicator startAnimating];
     
     
     int i=0;
     
-    for (NSDictionary *actoAgent in obj.Dwall)
+    for (NSDictionary *actoAgent in obj.rel_Dwall)
         
     {
         
@@ -1851,7 +1851,7 @@
     
     GlobalClass *obj=[GlobalClass getInstance];
     
-    NSLog(@"images=%@",obj.wallpapers);
+    NSLog(@"images=%@",obj.rel_wallpapers);
     
     
     
@@ -1863,13 +1863,13 @@
     
     
     
-    fbsharetext = [obj.wallpapers objectForKey:@"fb_share"];
+    fbsharetext = [obj.rel_wallpapers objectForKey:@"fb_share"];
     
     NSLog(@"fb_share=%@",fbsharetext);
     
     
     
-    twtsharetext = [obj.wallpapers objectForKey:@"twitter_share"];
+    twtsharetext = [obj.rel_wallpapers objectForKey:@"twitter_share"];
     
     NSLog(@"twitter_share=%@",twtsharetext);
     
@@ -1877,7 +1877,7 @@
     
     
     
-    mailsharesub = [obj.wallpapers objectForKey:@"email_subject"];
+    mailsharesub = [obj.rel_wallpapers objectForKey:@"email_subject"];
     
     NSLog(@"email_subject=%@",mailsharesub);
     
@@ -1885,7 +1885,7 @@
     
     
     
-    mailsharetext = [obj.wallpapers objectForKey:@"email_share"];
+    mailsharetext = [obj.rel_wallpapers objectForKey:@"email_share"];
     
     NSLog(@"email_share=%@",mailsharetext);
     

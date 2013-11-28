@@ -80,9 +80,9 @@ obj.CHECK_CATALOG=@"0";
     
     
     GlobalClass *obj=[GlobalClass getInstance];
-    NSLog(@"moviedata=%@",obj.moviedata);
+    NSLog(@"moviedata=%@",obj.rel_moviedata);
     int j = 0;
-    for (NSDictionary *actoAgent in obj.movieCategory)
+    for (NSDictionary *actoAgent in obj.rel_movieCategory)
 	{
         data11[j]= [actoAgent objectForKey:@"movie_cat_id"];
         NSLog(@"data11=%@",data11[j]);
@@ -101,7 +101,7 @@ obj.CHECK_CATALOG=@"0";
     TotalCategory = j;
     
     int i=0;
-	for (NSDictionary *actoAgent in obj.moviedata)
+	for (NSDictionary *actoAgent in obj.rel_moviedata)
 	{
         
         data1[i]= [actoAgent objectForKey:@"m_id"];

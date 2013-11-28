@@ -70,9 +70,9 @@
 -(void)getdata
 {
     GlobalClass *obj=[GlobalClass getInstance];
-	NSLog(@"ddata=%@",obj.awardCat);
+	NSLog(@"ddata=%@",obj.rel_awardCat);
   	int i=0;
-	for (NSDictionary *actoAgent in obj.awardCat)
+	for (NSDictionary *actoAgent in obj.rel_awardCat)
 	{
 		data1[i]= [actoAgent objectForKey:@"m_award_id"];
 		NSLog(@"m_award_id=%@",data1[i]);

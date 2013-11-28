@@ -207,11 +207,11 @@
    
 
     GlobalClass *obj=[GlobalClass getInstance];
-    NSLog(@"moviedata=%@",obj.moviedata);
+    NSLog(@"moviedata=%@",obj.rel_moviedata);
     
     
     int i=0;
-	for (NSDictionary *actoAgent in obj.moviedata)
+	for (NSDictionary *actoAgent in obj.rel_moviedata)
 	{
         
             data1[i]= [actoAgent objectForKey:@"m_id"];

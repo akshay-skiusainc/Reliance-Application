@@ -534,24 +534,24 @@ CGSize maximumLabelSize;
 {
     
     GlobalClass *obj=[GlobalClass getInstance];
-    NSLog(@"images=%@",obj.facebook);
+    NSLog(@"images=%@",obj.rel_facebook);
     
     
     //        for (NSDictionary *actoAgent in obj.wallpapers)
     //        {
     
-    fbsharetext = [obj.facebook objectForKey:@"fb_share"];
+    fbsharetext = [obj.rel_facebook objectForKey:@"fb_share"];
     NSLog(@"fb_share=%@",fbsharetext);
     
-    twtsharetext = [obj.facebook objectForKey:@"twitter_share"];
+    twtsharetext = [obj.rel_facebook objectForKey:@"twitter_share"];
     NSLog(@"twitter_share=%@",twtsharetext);
     
     
-    mailsharesub = [obj.facebook objectForKey:@"email_subject"];
+    mailsharesub = [obj.rel_facebook objectForKey:@"email_subject"];
     NSLog(@"email_subject=%@",mailsharesub);
     
     
-    mailsharetext = [obj.facebook objectForKey:@"email_share"];
+    mailsharetext = [obj.rel_facebook objectForKey:@"email_share"];
     NSLog(@"email_share=%@",mailsharetext);
     
     //            break;
@@ -584,10 +584,10 @@ CGSize maximumLabelSize;
             GlobalClass *obj=[GlobalClass getInstance];
             NSString* post ;
             
-            NSLog(@"NEWSDATA=%@",obj.fbtoken);
+            NSLog(@"NEWSDATA=%@",obj.rel_fbtoken);
             
             
-            for (NSDictionary *actoAgent in obj.fbtoken)
+            for (NSDictionary *actoAgent in obj.rel_fbtoken)
             {
                 
                 FBID = [actoAgent objectForKey:@"facebook_id"];
@@ -653,7 +653,7 @@ CGSize maximumLabelSize;
                 NSDictionary *getdata1 = [json objectForKey:@"data"];
                 
                 
-                obj.FBSTATUS = getdata1;
+                obj.rel_FBSTATUS = getdata1;
                 
             }
             
@@ -787,17 +787,17 @@ CGSize maximumLabelSize;
     
     GlobalClass *obj=[GlobalClass getInstance];
     
-    for (NSDictionary *actoAgent in obj.appData)
+    for (NSDictionary *actoAgent in obj.rel_appData)
     {
         dataMvName= [actoAgent objectForKey:@"app_movie_name"];
         NSLog(@"app_movie_name=%@",dataMvName);
         
     }
     
-	NSLog(@"NEWSDATA=%@",obj.FBSTATUS);
+	NSLog(@"NEWSDATA=%@",obj.rel_FBSTATUS);
 	
 	int i=0;
-	for (NSDictionary *actoAgent in obj.FBSTATUS)
+	for (NSDictionary *actoAgent in obj.rel_FBSTATUS)
 	{
         NSDictionary *from = [actoAgent objectForKey:@"from"];
         NSString *getid = [from objectForKey:@"fb_id"];

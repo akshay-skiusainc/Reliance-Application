@@ -30,11 +30,11 @@
     [self getsharetext];
     
     GlobalClass *obj=[GlobalClass getInstance];
-    NSLog(@"moviedata=%@",obj.moviedata);
+    NSLog(@"moviedata=%@",obj.rel_moviedata);
     
     
     int i=0;
-	for (NSDictionary *actoAgent in obj.moviedata)
+	for (NSDictionary *actoAgent in obj.rel_moviedata)
 	{
         
         data1[i]= [actoAgent objectForKey:@"m_id"];
@@ -147,13 +147,13 @@
 {
     
     GlobalClass *obj=[GlobalClass getInstance];
-    NSLog(@"moviedata=%@",obj.CNC);
+    NSLog(@"moviedata=%@",obj.rel_CNC);
     
     
     int i=0;
     int j=0;
     
-	for (NSDictionary *actoAgent in obj.CNC)
+	for (NSDictionary *actoAgent in obj.rel_CNC)
 	{
         
         data1[i]= [actoAgent objectForKey:@"movie_id"];
@@ -187,7 +187,7 @@
     [_castncrewtable reloadData];
     
     int k=0;
-	for (NSDictionary *actoAgent in obj.videolinks)
+	for (NSDictionary *actoAgent in obj.rel_videolinks)
 	{
         data10[k]= [actoAgent objectForKey:@"shortscene_video"];
 		NSLog(@"shortscene_video=%@",data1[k]);
@@ -577,21 +577,21 @@
 {
     
     GlobalClass *obj=[GlobalClass getInstance];
-    NSLog(@"images=%@",obj.moviesharetxt);
+    NSLog(@"images=%@",obj.rel_moviesharetxt);
     
     
-    fbsharetext = [obj.moviesharetxt objectForKey:@"fb_share"];
+    fbsharetext = [obj.rel_moviesharetxt objectForKey:@"fb_share"];
     NSLog(@"fb_share=%@",fbsharetext);
     
-    twtsharetext = [obj.moviesharetxt objectForKey:@"twitter_share"];
+    twtsharetext = [obj.rel_moviesharetxt objectForKey:@"twitter_share"];
     NSLog(@"twitter_share=%@",twtsharetext);
     
     
-    mailsharesub = [obj.moviesharetxt objectForKey:@"email_subject"];
+    mailsharesub = [obj.rel_moviesharetxt objectForKey:@"email_subject"];
     NSLog(@"email_subject=%@",mailsharesub);
     
     
-    mailsharetext = [obj.moviesharetxt objectForKey:@"email_share"];
+    mailsharetext = [obj.rel_moviesharetxt objectForKey:@"email_share"];
     NSLog(@"email_share=%@",mailsharetext);
     
     

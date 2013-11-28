@@ -286,10 +286,10 @@
                 NSDictionary* contest_btn = [json objectForKey:@"contest_button"];
                 
                 GlobalClass *obj=[GlobalClass getInstance];
-                obj.contestData = contestData;
-                obj.contestHeader = contestHeader;
-                obj.contest_bg = contest_bg;
-                obj.contest_btn = contest_btn;
+                obj.rel_contestData = contestData;
+                obj.rel_contestHeader = contestHeader;
+                obj.rel_contest_bg = contest_bg;
+                obj.rel_contest_btn = contest_btn;
             }
             else
             {
@@ -317,7 +317,7 @@
         int i=1;
         
         
-        for (NSDictionary *actoAgent in obj.contestData)
+        for (NSDictionary *actoAgent in obj.rel_contestData)
         {
             data1[0]= [actoAgent objectForKey:@"title"];
             if ([data1[0] isEqualToString:@"FAIL"])
@@ -391,7 +391,7 @@
         
         
         
-        for (NSDictionary *actoAgent1 in obj.contestHeader)
+        for (NSDictionary *actoAgent1 in obj.rel_contestHeader)
         {
             data1[0]= [actoAgent1 objectForKey:@"contest_img_id"];
             if ([data1[0] isEqualToString:@"FAIL"])
@@ -419,7 +419,7 @@
         
         
         int j=1;
-        for (NSDictionary *actoAgent2 in obj.contest_bg)
+        for (NSDictionary *actoAgent2 in obj.rel_contest_bg)
         {
             data1[0]= [actoAgent2 objectForKey:@"contest_img_id"];
             if ([data1[0] isEqualToString:@"FAIL"])
@@ -447,7 +447,7 @@
             j++;
         }
         
-        for (NSDictionary *actoAgent3 in obj.contest_btn)
+        for (NSDictionary *actoAgent3 in obj.rel_contest_btn)
         {
             data1[0]= [actoAgent3 objectForKey:@"contest_img_id"];
             if ([data1[0] isEqualToString:@"FAIL"])

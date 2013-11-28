@@ -673,10 +673,8 @@
                 obj.rel_bms_link= [actoAgent objectForKey:@"web_link"];
                 
             }
-            if(obj.rel_trailers == nil)
-            {
-                obj.rel_trailers = trailers;
-            }
+            
+            obj.rel_trailers = trailers;
             obj.rel_awardCat = award_cat;
             obj.rel_awardInfo = award_info;
             obj.rel_awardMovie = award_movie;
@@ -710,8 +708,8 @@
             
             for (NSDictionary *actoAgent in iapp)
             {
-                obj.rel_IAPProduct1= [actoAgent objectForKey:@"wall_key"];
-                NSLog(@"IAPProduct1=%@",obj.rel_IAPProduct1);
+                obj.IAPProduct1= [actoAgent objectForKey:@"wall_key"];
+                NSLog(@"IAPProduct1=%@",obj.IAPProduct1);
                 
             }
             

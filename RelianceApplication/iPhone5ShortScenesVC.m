@@ -545,9 +545,9 @@
 -(void)getdata
 {
 	GlobalClass *obj=[GlobalClass getInstance];
-	NSLog(@"ddata=%@",obj.videolinks);
+	NSLog(@"ddata=%@",obj.rel_videolinks);
   	int i=0;
-	for (NSDictionary *actoAgent in obj.videolinks)
+	for (NSDictionary *actoAgent in obj.rel_videolinks)
 	{
         data1[i]= [actoAgent objectForKey:@"shortscene_video"];
 		NSLog(@"shortscene_video=%@",data1[i]);
@@ -1191,18 +1191,18 @@
     GlobalClass *obj=[GlobalClass getInstance];
     
    
-        fbsharetext = [obj.behindscene_video objectForKey:@"fb_share"];
+        fbsharetext = [obj.rel_behindscene_video objectForKey:@"fb_share"];
         NSLog(@"fb_share=%@",fbsharetext);
         
-        twtsharetext = [obj.behindscene_video objectForKey:@"twitter_share"];
+        twtsharetext = [obj.rel_behindscene_video objectForKey:@"twitter_share"];
         NSLog(@"twitter_share=%@",twtsharetext);
         
         
-        mailsharesub = [obj.behindscene_video objectForKey:@"email_subject"];
+        mailsharesub = [obj.rel_behindscene_video objectForKey:@"email_subject"];
         NSLog(@"email_subject=%@",mailsharesub);
         
         
-        mailsharetext = [obj.behindscene_video objectForKey:@"email_share"];
+        mailsharetext = [obj.rel_behindscene_video objectForKey:@"email_share"];
         NSLog(@"email_share=%@",mailsharetext);
         
         
