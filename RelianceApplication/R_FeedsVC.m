@@ -852,154 +852,162 @@ CGSize maximumLabelSize;
 }
 -(void)twitter:(UIButton *)sender{
     NSUInteger check = [[NSUserDefaults standardUserDefaults] integerForKey:@"twtSwitch"];
-    if (check==1) {
-        
-        
-        
-    }
-    else
+    if (check==1 || check==2)
     {
         NSUserDefaults *setUserDefaults=[NSUserDefaults standardUserDefaults];
         [setUserDefaults setInteger:1 forKey:@"twtSwitch"];
         
-    }
-	//  Create an instance of the Tweet Sheet
-	TWTweetComposeViewController *tweetSheet =
-	[[TWTweetComposeViewController alloc] init];
-	
-	// Sets the completion handler.  Note that we don't know which thread the
-	// block will be called on, so we need to ensure that any UI updates occur
-	// on the main queue
-	tweetSheet.completionHandler = ^(TWTweetComposeViewControllerResult result) {
-		switch(result) {
-			case TWTweetComposeViewControllerResultCancelled:
-				//  This means the user cancelled without sending the Tweet
-				break;
-			case TWTweetComposeViewControllerResultDone:
-				//  This means the user hit 'Send'
-				break;
-		}
-		
-		
-		//  dismiss the Tweet Sheet
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[self dismissViewControllerAnimated:NO completion:^{
-				NSLog(@"Tweet Sheet has been dismissed.");
-			}];
-		});
-	};
-	NSString*  strr;
-    
-    
-    if (check_on==1) {
-        //NSString	*str= [NSString stringWithFormat:@"\"%@\"%@ ",sharetweet[gesture.view.tag],twtsharetext];
-        if ([sharetweet1[[sender tag]] length ]>47) {
-            strr= [sharetweet1[[sender tag]] substringToIndex:47];
+        //  Create an instance of the Tweet Sheet
+        TWTweetComposeViewController *tweetSheet =
+        [[TWTweetComposeViewController alloc] init];
+        
+        // Sets the completion handler.  Note that we don't know which thread the
+        // block will be called on, so we need to ensure that any UI updates occur
+        // on the main queue
+        tweetSheet.completionHandler = ^(TWTweetComposeViewControllerResult result) {
+            switch(result) {
+                case TWTweetComposeViewControllerResultCancelled:
+                    //  This means the user cancelled without sending the Tweet
+                    break;
+                case TWTweetComposeViewControllerResultDone:
+                    //  This means the user hit 'Send'
+                    break;
+            }
+            
+            
+            //  dismiss the Tweet Sheet
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self dismissViewControllerAnimated:NO completion:^{
+                    NSLog(@"Tweet Sheet has been dismissed.");
+                }];
+            });
+        };
+        NSString*  strr;
+        
+        
+        if (check_on==1) {
+            //NSString	*str= [NSString stringWithFormat:@"\"%@\"%@ ",sharetweet[gesture.view.tag],twtsharetext];
+            if ([sharetweet1[[sender tag]] length ]>47) {
+                strr= [sharetweet1[[sender tag]] substringToIndex:47];
+                
+            }
+            else
+            {
+                strr= sharetweet1[[sender tag]];
+            }
+            // [self fbios6:strr];
+            
+            
+            
+            //  NSString	*str= [NSString stringWithFormat:@"\"%@\"%@",strr,twtsharetext];
+            
             
         }
-        else
-        {
-            strr= sharetweet1[[sender tag]];
+        
+        else{
+            //NSString	*str= [NSString stringWithFormat:@"\"%@\"%@ ",sharetweet[gesture.view.tag],twtsharetext];
+            if ([sharetweet[[sender tag]] length ]>47) {
+                strr= [sharetweet[[sender tag]] substringToIndex:47];
+                
+            }
+            else
+            {
+                strr= sharetweet[[sender tag]];
+            }
+            // [self fbios6:strr];
+            
         }
-        // [self fbios6:strr];
-        
-        
         
         //  NSString	*str= [NSString stringWithFormat:@"\"%@\"%@",strr,twtsharetext];
+        NSString	*str= [NSString stringWithFormat:@"\"%@..\"%@",strr,twtsharetext];
+        NSLog(@"twitttter=%@",str);
         
+        //  Set the initial body of the Tweet
+        [tweetSheet setInitialText:str];
         
+        //  Adds an image to the Tweet
+        //  For demo purposes, assume we have an image named 'larry.png'
+        //  that we wish to attach
+        //	if (![tweetSheet addImage:[UIImage imageNamed:@"114x114.png"]]) {
+        //		NSLog(@"Unable to add the image!");
+        //	}
+        
+        //  Add an URL to the Tweet.  You can add multiple URLs.
+        //	if (![tweetSheet addURL:[NSURL URLWithString:@"http://twitter.com/"]]){
+        //		NSLog(@"Unable to add the URL!");
+        //	}
+        
+        //  Presents the Tweet Sheet to the user
+        [self presentViewController:tweetSheet animated:NO completion:^{
+            NSLog(@"Tweet sheet has been presented.");
+        }];
+
     }
     
-    else{
-        //NSString	*str= [NSString stringWithFormat:@"\"%@\"%@ ",sharetweet[gesture.view.tag],twtsharetext];
-        if ([sharetweet[[sender tag]] length ]>47) {
-            strr= [sharetweet[[sender tag]] substringToIndex:47];
-            
-        }
-        else
-        {
-            strr= sharetweet[[sender tag]];
-        }
-        // [self fbios6:strr];
+    else
+    {
+        UIAlertView *twtAlert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please go to the profile section and turn on Facebook / Twitter settings." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        twtAlert.tag=0;
+        [twtAlert show];
         
     }
-    
-    //  NSString	*str= [NSString stringWithFormat:@"\"%@\"%@",strr,twtsharetext];
-    NSString	*str= [NSString stringWithFormat:@"\"%@..\"%@",strr,twtsharetext];
-    NSLog(@"twitttter=%@",str);
-    
-	//  Set the initial body of the Tweet
-	[tweetSheet setInitialText:str];
-	
-	//  Adds an image to the Tweet
-	//  For demo purposes, assume we have an image named 'larry.png'
-	//  that we wish to attach
-    //	if (![tweetSheet addImage:[UIImage imageNamed:@"114x114.png"]]) {
-    //		NSLog(@"Unable to add the image!");
-    //	}
-	
-	//  Add an URL to the Tweet.  You can add multiple URLs.
-    //	if (![tweetSheet addURL:[NSURL URLWithString:@"http://twitter.com/"]]){
-    //		NSLog(@"Unable to add the URL!");
-    //	}
-	
-	//  Presents the Tweet Sheet to the user
-	[self presentViewController:tweetSheet animated:NO completion:^{
-		NSLog(@"Tweet sheet has been presented.");
-	}];
-}
+	}
 
 -(IBAction)fbshare:(UIButton *)sender
 {
     
     NSUInteger check = [[NSUserDefaults standardUserDefaults] integerForKey:@"fbSwitch"];
-    if (check==1) {
-        
-        
-        
-    }
-    else
+    if (check==1 || check==2)
     {
         NSUserDefaults *setUserDefaults=[NSUserDefaults standardUserDefaults];
         [setUserDefaults setInteger:1 forKey:@"fbSwitch"];
         
-    }
-    NSString *ver = [[UIDevice currentDevice] systemVersion];
-    float ver_float = [ver floatValue];
-    if (ver_float < 6.0)
-    {
-        
-    }
-    else{
-        NSString*  strr;
-        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-            if (check_on==1) {
-                strr= [shareText1[[sender tag]] substringToIndex:47];
+        NSString *ver = [[UIDevice currentDevice] systemVersion];
+        float ver_float = [ver floatValue];
+        if (ver_float < 6.0)
+        {
+            
+        }
+        else{
+            NSString*  strr;
+            if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+                if (check_on==1) {
+                    strr= [shareText1[[sender tag]] substringToIndex:47];
+                    
+                }
+                
+                else
+                    strr= [shareText[[sender tag]] substringToIndex:47];
+                
+                
+                [self fbios6:strr];
+                
                 
             }
             
             else
-                strr= [shareText[[sender tag]] substringToIndex:47];
+            {
+                UIAlertView* logoutalertbox = [[ UIAlertView alloc]initWithTitle:@"Facebook login required!" message:@"To continue, please log into your Facebook Account through device settings." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil ];
+                //   logoutalertbox.tag=5;
+                logoutalertbox.delegate=self;
+                [logoutalertbox show];
+                
+            }
             
             
-            [self fbios6:strr];
-            
-            
-        }
-        
-        else
-        {
-            UIAlertView* logoutalertbox = [[ UIAlertView alloc]initWithTitle:@"Facebook login required!" message:@"To continue, please log into your Facebook Account through device settings." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil ];
-            //   logoutalertbox.tag=5;
-            logoutalertbox.delegate=self;
-            [logoutalertbox show];
             
         }
-        
-        
-        
+
     }
     
+    else
+    {
+        UIAlertView *twtAlert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please go to the profile section and turn on Facebook / Twitter settings." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        twtAlert.tag=0;
+        [twtAlert show];
+        
+    }
+       
 	
 }
 

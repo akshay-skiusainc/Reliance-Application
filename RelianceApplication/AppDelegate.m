@@ -106,6 +106,8 @@ static NSString *const kTrackingId = @"UA-42554692-1";
 //        }
 //    }];
 //    
+        
+    
     
     GlobalClass *obj=[GlobalClass getInstance];
     obj.CHECK_LOADING=@"1";

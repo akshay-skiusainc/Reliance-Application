@@ -1960,206 +1960,215 @@
 
 - (IBAction)twitter:(UIButton *)sender {
     NSUInteger check1 = [[NSUserDefaults standardUserDefaults] integerForKey:@"twtSwitch"];
-    if (check1==1) {
-        
-        
-        
-    }
-    else
+    if (check==1 || check==2)
     {
         NSUserDefaults *setUserDefaults=[NSUserDefaults standardUserDefaults];
         [setUserDefaults setInteger:1 forKey:@"twtSwitch"];
         
-    }
-
-    imgIndex=sender.tag;
-    
-    strr= [NSString stringWithFormat:@"%@",data3[imgIndex]];
-    
-    shareText= strr;
-    
-    //  Create an instance of the Tweet Sheet
-    
-    TWTweetComposeViewController *tweetSheet =
-    
-    [[TWTweetComposeViewController alloc] init];
-    
-    
-    // Sets the completion handler.  Note that we don't know which thread the
-    
-    // block will be called on, so we need to ensure that any UI updates occur
-    
-    // on the main queue
-    
-    tweetSheet.completionHandler = ^(TWTweetComposeViewControllerResult result) {
+        imgIndex=sender.tag;
         
-        switch(result) {
+        strr= [NSString stringWithFormat:@"%@",data3[imgIndex]];
+        
+        shareText= strr;
+        
+        //  Create an instance of the Tweet Sheet
+        
+        TWTweetComposeViewController *tweetSheet =
+        
+        [[TWTweetComposeViewController alloc] init];
+        
+        
+        // Sets the completion handler.  Note that we don't know which thread the
+        
+        // block will be called on, so we need to ensure that any UI updates occur
+        
+        // on the main queue
+        
+        tweetSheet.completionHandler = ^(TWTweetComposeViewControllerResult result) {
+            
+            switch(result) {
+                    
+                case TWTweetComposeViewControllerResultCancelled:
+                    
+                    //  This means the user cancelled without sending the Tweet
+                    
+                    break;
+                    
+                case TWTweetComposeViewControllerResultDone:
+                    
+                    //  This means the user hit 'Send'
+                    
+                    break;
+                    
+            }
+            
+            
+            
+            //  dismiss the Tweet Sheet
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
                 
-            case TWTweetComposeViewControllerResultCancelled:
+                [self dismissViewControllerAnimated:NO completion:^{
+                    
+                    NSLog(@"Tweet Sheet has been dismissed.");
+                    
+                }];
                 
-                //  This means the user cancelled without sending the Tweet
-                
-                break;
-                
-            case TWTweetComposeViewControllerResultDone:
-                
-                //  This means the user hit 'Send'
-                
-                break;
-                
+            });
+            
+        };
+        
+        //NSString	*str= [NSString stringWithFormat:@"Downloaded wallpaper:%@ from official Besharam App. Get free copy of App @http://tinyurl.com/off-yjhd",shareText];
+        
+        
+        
+        
+        //NSString *strtweet= [NSString stringWithFormat:@"Reading exciting news on the official Yeh Jawaani Hai Deewani App. Get free copy of the App @http://tinyurl.com/off-yjhd"];
+        
+        
+        //  Set the initial body of the Tweet
+        
+        [tweetSheet setInitialText:twtsharetext];
+        
+        
+        //  Adds an image to the Tweet
+        
+        //  For demo purposes, assume we have an image named 'larry.png'
+        
+        //  that we wish to attach
+        
+        //	if (![tweetSheet addImage:[UIImage imageNamed:shareText]]) {
+        
+        //	 NSLog(@"Unable to add the image!");
+        
+        //	}
+        
+        
+        //  Add an URL to the Tweet.  You can add multiple URLs.
+        
+        if (![tweetSheet addURL:[NSURL URLWithString:shareText]]){
+            
+            NSLog(@"Unable to add the URL!");
+            
         }
         
         
+        //  Presents the Tweet Sheet to the user
         
-        //  dismiss the Tweet Sheet
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [self presentViewController:tweetSheet animated:NO completion:^{
             
-            [self dismissViewControllerAnimated:NO completion:^{
-                
-                NSLog(@"Tweet Sheet has been dismissed.");
-                
-            }];
+            NSLog(@"Tweet sheet has been presented.");
             
-        });
+        }];
         
-    };
-    
-    //NSString	*str= [NSString stringWithFormat:@"Downloaded wallpaper:%@ from official Besharam App. Get free copy of App @http://tinyurl.com/off-yjhd",shareText];
-    
-    
-    
-    
-    //NSString *strtweet= [NSString stringWithFormat:@"Reading exciting news on the official Yeh Jawaani Hai Deewani App. Get free copy of the App @http://tinyurl.com/off-yjhd"];
-    
-    
-    //  Set the initial body of the Tweet
-    
-    [tweetSheet setInitialText:twtsharetext];
-    
-    
-    //  Adds an image to the Tweet
-    
-    //  For demo purposes, assume we have an image named 'larry.png'
-    
-    //  that we wish to attach
-    
-    //	if (![tweetSheet addImage:[UIImage imageNamed:shareText]]) {
-    
-    //	 NSLog(@"Unable to add the image!");
-    
-    //	}
-    
-    
-    //  Add an URL to the Tweet.  You can add multiple URLs.
-    
-    if (![tweetSheet addURL:[NSURL URLWithString:shareText]]){
+
         
-        NSLog(@"Unable to add the URL!");
         
     }
     
-    
-    //  Presents the Tweet Sheet to the user
-    
-    [self presentViewController:tweetSheet animated:NO completion:^{
+    else
+    {
+        UIAlertView *twtAlert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please go to the profile section and turn on Facebook / Twitter settings." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        twtAlert.tag=0;
+        [twtAlert show];
         
-        NSLog(@"Tweet sheet has been presented.");
-        
-    }];
-    
-    
+    }
+       
     
 }
 - (IBAction)fbshare:(UIButton *)sender
 
 {
     NSUInteger check1 = [[NSUserDefaults standardUserDefaults] integerForKey:@"fbSwitch"];
-    if (check1==1) {
-        
-        
-        
-    }
-    else
+    if (check==1 || check==2)
     {
         NSUserDefaults *setUserDefaults=[NSUserDefaults standardUserDefaults];
         [setUserDefaults setInteger:1 forKey:@"fbSwitch"];
         
-    }
-
-    int a =sender.tag;
-    
-    //	NSString *str=[NSString stringWithFormat:@"Downloaded this amazing wallpaper: %@ from official YJHD App. Get free copy of the App @<tiny url>",titleMusic.text];
-    
-    //	post = [[FBFeedPost alloc] initWithLinkPath:@"http://ow.ly/g4bRR" caption:str];
-    
-    strr= [NSString stringWithFormat:@"%@",data3[a]];
-    
-    shareText= strr;
-    
-    
-    
-    NSString *ver = [[UIDevice currentDevice] systemVersion];
-    
-    float ver_float = [ver floatValue];
-    
-    if (ver_float < 6.0)
+        int a =sender.tag;
         
-    {
+        //	NSString *str=[NSString stringWithFormat:@"Downloaded this amazing wallpaper: %@ from official YJHD App. Get free copy of the App @<tiny url>",titleMusic.text];
         
-        //        sharepost = [[FBFeedPost alloc] initWithLinkPath:shareText caption:fbsharetext];
-        //
-        //        [self sharefeedonfb1:sharepost];
+        //	post = [[FBFeedPost alloc] initWithLinkPath:@"http://ow.ly/g4bRR" caption:str];
+        
+        strr= [NSString stringWithFormat:@"%@",data3[a]];
+        
+        shareText= strr;
         
         
         
-    }
-    
-    else{
+        NSString *ver = [[UIDevice currentDevice] systemVersion];
         
+        float ver_float = [ver floatValue];
         
-        
-        
-        
-        if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
-            
-            
-            
-            
-            
-            [self fbios6:shareText];
-            
-            
-            
-            
-            
-        }
-        
-        
-        
-        else
+        if (ver_float < 6.0)
             
         {
             
-            UIAlertView* logoutalertbox = [[ UIAlertView alloc]initWithTitle:@"Facebook login required!" message:@"To continue, please log into your Facebook Account through device settings." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil ];
-            
-            //   logoutalertbox.tag=5;
-            
-            logoutalertbox.delegate=self;
-            
-            [logoutalertbox show];
+            //        sharepost = [[FBFeedPost alloc] initWithLinkPath:shareText caption:fbsharetext];
+            //
+            //        [self sharefeedonfb1:sharepost];
             
             
             
         }
         
+        else{
+            
+            
+            
+            
+            
+            if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+                
+                
+                
+                
+                
+                [self fbios6:shareText];
+                
+                
+                
+                
+                
+            }
+            
+            
+            
+            else
+                
+            {
+                
+                UIAlertView* logoutalertbox = [[ UIAlertView alloc]initWithTitle:@"Facebook login required!" message:@"To continue, please log into your Facebook Account through device settings." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil ];
+                
+                //   logoutalertbox.tag=5;
+                
+                logoutalertbox.delegate=self;
+                
+                [logoutalertbox show];
+                
+                
+                
+            }
+            
+            
+            
+            
+            
+        }
         
-        
-        
-        
+
     }
     
-    
+    else
+    {
+        UIAlertView *twtAlert=[[UIAlertView alloc]initWithTitle:@"Alert" message:@"Please go to the profile section and turn on Facebook / Twitter settings." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        twtAlert.tag=0;
+        [twtAlert show];
+        
+    }
+
+     
     
     
     
