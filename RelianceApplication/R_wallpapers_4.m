@@ -441,8 +441,6 @@
         
         self.navigationItem.leftBarButtonItem = customBarItem;
         
-        
-        
     }
     
     [self getsharetext];
