@@ -1513,9 +1513,9 @@
             
             
             
-            if ([data11[a] isEqualToString:@"1"])
+            if ([data15[a] isEqualToString:@"1"])
             {
-                lockImageStills = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 314,200)];
+                lockImageStills = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,207)];
                 lockImageStills.image = [UIImage imageNamed:@"premi_video.png"];
                 [view3[a] addSubview:lockImageStills];
             }
