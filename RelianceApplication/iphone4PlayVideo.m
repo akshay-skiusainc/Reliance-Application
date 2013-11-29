@@ -495,6 +495,7 @@
         NSLog(@"email_share=%@",mailsharetext);
 
     }
+        //
     else{
     fbsharetext = [obj.videosharetext objectForKey:@"fb_share"];
     NSLog(@"fb_share=%@",fbsharetext);
