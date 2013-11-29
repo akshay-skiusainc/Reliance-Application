@@ -953,8 +953,8 @@
                 webwall[i].opaque = NO;
                 webwall[i].scalesPageToFit = YES;
                 [bgView[i] addSubview:webwall[i]];
-                
-                
+           
+            
                 ImagePatch[i] = [[UIImageView alloc] initWithFrame:CGRectMake(2,220, 315,45)];
                 ImagePatch[i].userInteractionEnabled=YES;
                 ImagePatch[i].backgroundColor=[UIColor clearColor];
@@ -1410,9 +1410,9 @@
             
             
             
-            if ([data11[a] isEqualToString:@"1"])
+            if ([data15[a] isEqualToString:@"1"])
             {
-                lockImageStills = [[UIImageView alloc]initWithFrame:CGRectMake(nX, nY, 150,200)];
+                lockImageStills = [[UIImageView alloc]initWithFrame:CGRectMake(0,0, 150.0, 207.0)];
                 lockImageStills.image = [UIImage imageNamed:@"premi_video.png"];
                 [view3[a] addSubview:lockImageStills];
             }

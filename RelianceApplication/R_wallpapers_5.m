@@ -615,6 +615,13 @@
             webViewTapped.delegate = self;
             
             [view3[a] addGestureRecognizer:webViewTapped];
+            
+            if([data10[a] isEqualToString:@"1"])
+            {
+                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                lockImage.image = [UIImage imageNamed:@"premi_video.png"];
+                [view3[a] addSubview:lockImage];
+            }
             MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
             MovieLabelStills[a].backgroundColor =[UIColor clearColor];
             //            MovieLabelStills[a].textColor= [self colorWithHexString:@"e42477"];
@@ -693,7 +700,12 @@
             webViewTapped.delegate = self;
             
             [view3[a] addGestureRecognizer:webViewTapped];
-            
+            if([data10[a] isEqualToString:@"1"])
+            {
+                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                lockImage.image = [UIImage imageNamed:@"premi_video.png"];
+                [view3[a] addSubview:lockImage];
+            }
             
             MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
             MovieLabelStills[a].backgroundColor =[UIColor clearColor];
@@ -824,6 +836,12 @@
             
             [view3[a] addGestureRecognizer:webViewTapped];
             
+            if([data10[a] isEqualToString:@"1"])
+            {
+                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                lockImage.image = [UIImage imageNamed:@"premi_video.png"];
+                [view3[a] addSubview:lockImage];
+            }
             
             MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
             MovieLabelStills[a].backgroundColor =[UIColor clearColor];
@@ -917,6 +935,13 @@
                 webViewTapped.delegate = self;
                 
                 [view3[a] addGestureRecognizer:webViewTapped];
+                if([data10[a] isEqualToString:@"1"])
+                {
+                    lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                    lockImage.image = [UIImage imageNamed:@"premi_video.png"];
+                    [view3[a] addSubview:lockImage];
+                }
+                
                 MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
                 MovieLabelStills[a].backgroundColor =[UIColor clearColor];
                 //            MovieLabelStills[a].textColor= [self colorWithHexString:@"e42477"];
@@ -1612,11 +1637,6 @@
     }
     
     
-    
-    
-    
-    
-    
 }
 
 
@@ -1654,10 +1674,7 @@
 -(void)downloadingHDImage
 
 {
-    
-    
-    
-    dispatch_async(dispatch_get_main_queue()	, ^{
+        dispatch_async(dispatch_get_main_queue()	, ^{
         
         NSData *imgData=[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",data1[imgIndex]]]];
         

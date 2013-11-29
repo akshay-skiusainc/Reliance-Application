@@ -5723,11 +5723,11 @@
 		FFF369EF181796E800611EFA /* R_Trailers */ = {
 			isa = PBXGroup;
 			children = (
-				51EA6DD0183E1BB8008E976A /* R_Trailers_4.m */,
-				51EA6DD1183E1BB8008E976A /* R_Trailers_5.m */,
 				5153A647183CE2AA003F2B68 /* R_Trailers_4.h */,
+				51EA6DD0183E1BB8008E976A /* R_Trailers_4.m */,
 				5153A649183CE2AA003F2B68 /* R_Trailers_4.xib */,
 				5153A64A183CE2AA003F2B68 /* R_Trailers_5.h */,
+				51EA6DD1183E1BB8008E976A /* R_Trailers_5.m */,
 				5153A64C183CE2AB003F2B68 /* R_Trailers_5.xib */,
 				5153A639183CC7B2003F2B68 /* R_OpenStills_4.m */,
 				5153A63A183CC7B2003F2B68 /* R_OpenStills_4.xib */,
