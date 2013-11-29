@@ -521,11 +521,7 @@
         
         
         
-        
-        
     }
-    
-    
     
     else
         
@@ -598,10 +594,9 @@
             
             
         }
-        
     }
-    
 }
+
 
 #pragma mark Compose Mail
 -(IBAction)mailCompose:(id)sender

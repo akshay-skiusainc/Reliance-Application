@@ -261,6 +261,8 @@
 	
     GlobalClass *obj=[GlobalClass getInstance];
     if ([obj.MOVIE_DATA isEqualToString:@"0"]) {
+        obj.MOVIE_DATA=@"1";
+
          //obj.dev=@"sadasfaefaeds23232dsafffsaff";
 	NSString* post = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/fetch_data_all_downloads_ios.php?deviceno=%@",obj.dev];
 	
@@ -565,7 +567,7 @@
     [activityIndicator removeFromSuperview];
 	[self performSelector:@selector(logincalled:) withObject:nil afterDelay:0.0];
         obj.MOVIE_DATA=@"1";
-        obj.REL_DATA=@"0";
+//        obj.REL_DATA=@"0";
 
 
     }
@@ -584,7 +586,8 @@ NSLog(@"data already fetched");
 	
 	GlobalClass *obj=[GlobalClass getInstance];
     if ([obj.REL_DATA isEqualToString:@"0"]) {
-        
+        obj.REL_DATA=@"1";
+
         NSString*   post = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/fetch_all_rel_ios.php?deviceno=%@",obj.dev];
         
         
@@ -818,7 +821,7 @@ NSLog(@"data already fetched");
 //        [self.navigationController setNavigationBarHidden:YES animated:YES];
 //        [self dismissViewControllerAnimated:NO completion:nil];
         obj.REL_DATA=@"1";
-        obj.MOVIE_DATA=@"0";
+//        obj.MOVIE_DATA=@"0";
 
 
     }

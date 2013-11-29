@@ -94,14 +94,15 @@ CGFloat newOffset;
         
         
     }
-    else if ([OBJ.Leftcheck isEqualToString:@"0"])
+    else if ([OBJ.Leftcheck isEqualToString:@"0"] && [OBJ.MOVIE_DATA isEqualToString:@"0"])
     {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
         
         ViewController *loginViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
         [self presentModalViewController:loginViewController animated:NO];
     }
-    else{
+    else if([OBJ.MOVIE_DATA isEqualToString:@"0"])
+    {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
         
         ViewController *loginViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];

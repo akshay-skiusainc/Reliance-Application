@@ -266,6 +266,8 @@
 	
 	GlobalClass *obj=[GlobalClass getInstance];
     if ([obj.MOVIE_DATA isEqualToString:@"0"]) {
+        obj.MOVIE_DATA=@"1";
+
 
 	NSString* post = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/fetch_data_all_downloads_ios.php?deviceno=%@",obj.dev];
 	
@@ -564,7 +566,7 @@
     [activityIndicator removeFromSuperview];
 	[self performSelector:@selector(logincalled:) withObject:nil afterDelay:0.0];
         obj.MOVIE_DATA=@"1";
-        obj.REL_DATA=@"0";
+//        obj.REL_DATA=@"0";
 
 
     }
@@ -580,6 +582,8 @@
 	
 	GlobalClass *obj=[GlobalClass getInstance];
     if ([obj.REL_DATA isEqualToString:@"0"]) {
+        obj.REL_DATA=@"1";
+
 
 	NSString*   post = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/fetch_all_rel_ios.php?deviceno=%@",obj.dev];
 	
@@ -816,7 +820,7 @@
 //        [self.navigationController popViewControllerAnimated:NO];
 
         obj.REL_DATA=@"1";
-        obj.MOVIE_DATA=@"0";
+//        obj.MOVIE_DATA=@"0";
 
     }
     

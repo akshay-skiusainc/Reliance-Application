@@ -99,6 +99,7 @@
 //        
 //    }
     
+    NSLog(@"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa=%@",OBJ.REL_DATA);
     
     if ([OBJ.fetchall isEqualToString:@"1"])
     {
@@ -106,7 +107,7 @@
         NSLog(@"fecthnothappening");
         
     }
-    else if ([OBJ.Leftcheck isEqualToString:@"1"])
+    else if ([OBJ.Leftcheck isEqualToString:@"1"] && [OBJ.REL_DATA isEqualToString:@"0"])
     {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
         
@@ -114,18 +115,22 @@
         if ([OBJ.CHECK_LOADING isEqualToString:@"1"]) {
             [self.navigationController pushViewController:loginViewController animated:NO];
             OBJ.CHECK_LOADING=@"0";
+//            OBJ.REL_DATA=@"1";
             
         }
-        else
+        else if([OBJ.REL_DATA isEqualToString:@"0"])
+        {
             [self presentModalViewController:loginViewController animated:NO];
+//            OBJ.REL_DATA=@"1";
 
 
+        }
         
         
         
         
     }
-    else{
+    else if([OBJ.REL_DATA isEqualToString:@"0"]){
         
         NSLog(@"fecthhappening");
 
@@ -134,7 +139,8 @@
         iphone4ViewController *loginViewController = [[iphone4ViewController alloc] initWithNibName:@"iphone4ViewController" bundle:nil];
         [self.navigationController pushViewController:loginViewController animated:NO];
     }
-
+else
+    NSLog(@"noting");
     
     OBJ.Leftcheck=@"1";
 
