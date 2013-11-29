@@ -85,19 +85,23 @@
              
         
     }
-    else if ([OBJ.Leftcheck isEqualToString:@"0"])
+    else if ([OBJ.Leftcheck isEqualToString:@"0"] && [OBJ.MOVIE_DATA isEqualToString:@"0"])
     {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
         
         iphone4ViewController *loginViewController = [[iphone4ViewController alloc] initWithNibName:@"iphone4ViewController" bundle:nil];
         //        [self.navigationController pushViewController:loginViewController animated:NO];
         [self presentModalViewController:loginViewController animated:NO];
+//        OBJ.MOVIE_DATA=@"1";
     }
-    else{
+    else if([OBJ.MOVIE_DATA isEqualToString:@"0"])
+    {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
 
         iphone4ViewController *loginViewController = [[iphone4ViewController alloc] initWithNibName:@"iphone4ViewController" bundle:nil];
         [self.navigationController pushViewController:loginViewController animated:NO];
+//        OBJ.MOVIE_DATA=@"1";
+
     }
     
     

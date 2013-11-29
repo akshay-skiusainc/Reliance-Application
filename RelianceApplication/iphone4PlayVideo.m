@@ -433,7 +433,50 @@
     
     //        for (NSDictionary *actoAgent in obj.wallpapers)
     //        {
+
     
+    
+    if([obj.Leftcheck isEqualToString:@"1"])
+    {
+        if([VCTag isEqual: @"FromBehindScene"])
+        {
+            fbsharetext = [obj.rel_behindscene_video objectForKey:@"fb_share"];
+            NSLog(@"fb_share=%@",fbsharetext);
+            
+            twtsharetext = [obj.rel_behindscene_video objectForKey:@"twitter_share"];
+            NSLog(@"twitter_share=%@",twtsharetext);
+            
+            
+            mailsharesub = [obj.rel_behindscene_video objectForKey:@"email_subject"];
+            NSLog(@"email_subject=%@",mailsharesub);
+            
+            
+            mailsharetext = [obj.rel_behindscene_video objectForKey:@"email_share"];
+            NSLog(@"email_share=%@",mailsharetext);
+            
+        }
+        else{
+            fbsharetext = [obj.rel_videosharetext objectForKey:@"fb_share"];
+            NSLog(@"fb_share=%@",fbsharetext);
+            
+            twtsharetext = [obj.rel_videosharetext objectForKey:@"twitter_share"];
+            NSLog(@"twitter_share=%@",twtsharetext);
+            
+            
+            mailsharesub = [obj.rel_videosharetext objectForKey:@"email_subject"];
+            NSLog(@"email_subject=%@",mailsharesub);
+            
+            
+            mailsharetext = [obj.rel_videosharetext objectForKey:@"email_share"];
+            NSLog(@"email_share=%@",mailsharetext);
+            
+        }
+
+        
+    }
+    
+    else
+    {
     
     if([VCTag isEqual: @"FromBehindScene"])
     {
@@ -468,9 +511,7 @@
     NSLog(@"email_share=%@",mailsharetext);
     
     }
-    //            break;
-    //
-    //        }
+    }
 }
 
 #pragma mark Compose Mail

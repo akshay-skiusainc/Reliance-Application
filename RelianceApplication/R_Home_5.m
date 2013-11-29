@@ -112,7 +112,7 @@
         
         
     }
-    else if ([OBJ.Leftcheck isEqualToString:@"1"])
+    else if ([OBJ.Leftcheck isEqualToString:@"1"] && [OBJ.REL_DATA isEqualToString:@"0"])
     {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
         
@@ -125,8 +125,10 @@
         else
         [self presentModalViewController:loginViewController animated:NO];
     }
-    else{
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    else if([OBJ.REL_DATA isEqualToString:@"0"])
+    {
+        
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
         
         ViewController *loginViewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
         [self.navigationController pushViewController:loginViewController animated:NO];
