@@ -470,6 +470,8 @@ CGSize maximumLabelSize;
     VideoScroller.alpha = 1.0;
     ((AsyncImageView *)_bigImageView).image = nil;
     actionBarDetail=nil;
+//    actionBarDetail=nil;
+
 }
 
 - (UIColor *) colorWithHexString: (NSString *) hex
