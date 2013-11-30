@@ -541,7 +541,6 @@
 		BA8BBA8717C398DE002FD911 /* lft_nav_contest.png in Resources */ = {isa = PBXBuildFile; fileRef = BA8BBA8317C398DE002FD911 /* lft_nav_contest.png */; };
 		BA8BBA8817C398DE002FD911 /* lft_nav_downloads.png in Resources */ = {isa = PBXBuildFile; fileRef = BA8BBA8417C398DE002FD911 /* lft_nav_downloads.png */; };
 		BA8BBA8B17C3A9DE002FD911 /* lft_nav_bhc.png in Resources */ = {isa = PBXBuildFile; fileRef = BA8BBA8A17C3A9DD002FD911 /* lft_nav_bhc.png */; };
-		BA8BBA8D17C3A9E8002FD911 /* login_privacy_btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = BA8BBA8C17C3A9E8002FD911 /* login_privacy_btn1.png */; };
 		BA903F0E17C333FB000D5C5E /* reliance_icon_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = BA903F0A17C333FB000D5C5E /* reliance_icon_57x57.png */; };
 		BA903F0F17C333FB000D5C5E /* reliance_icon_58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = BA903F0B17C333FB000D5C5E /* reliance_icon_58x58.png */; };
 		BA903F1017C333FB000D5C5E /* reliance_icon_72x72.png in Resources */ = {isa = PBXBuildFile; fileRef = BA903F0C17C333FB000D5C5E /* reliance_icon_72x72.png */; };
@@ -2116,7 +2115,6 @@
 		BA8BBA8317C398DE002FD911 /* lft_nav_contest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lft_nav_contest.png; sourceTree = "<group>"; };
 		BA8BBA8417C398DE002FD911 /* lft_nav_downloads.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lft_nav_downloads.png; sourceTree = "<group>"; };
 		BA8BBA8A17C3A9DD002FD911 /* lft_nav_bhc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lft_nav_bhc.png; sourceTree = "<group>"; };
-		BA8BBA8C17C3A9E8002FD911 /* login_privacy_btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_privacy_btn1.png; sourceTree = "<group>"; };
 		BA903F0A17C333FB000D5C5E /* reliance_icon_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reliance_icon_57x57.png; sourceTree = "<group>"; };
 		BA903F0B17C333FB000D5C5E /* reliance_icon_58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reliance_icon_58x58.png; sourceTree = "<group>"; };
 		BA903F0C17C333FB000D5C5E /* reliance_icon_72x72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reliance_icon_72x72.png; sourceTree = "<group>"; };
@@ -3478,7 +3476,6 @@
 		BA423A0417B0D4500092D8D6 /* login-screen */ = {
 			isa = PBXGroup;
 			children = (
-				BA8BBA8C17C3A9E8002FD911 /* login_privacy_btn1.png */,
 				BA423A0517B0D4500092D8D6 /* login_bg.jpg */,
 				BA423A0617B0D4500092D8D6 /* login_fb.jpg */,
 				BA423A0717B0D4500092D8D6 /* login_screen_logo.png */,
@@ -6133,7 +6130,6 @@
 				BA8BBA8717C398DE002FD911 /* lft_nav_contest.png in Resources */,
 				BA8BBA8817C398DE002FD911 /* lft_nav_downloads.png in Resources */,
 				BA8BBA8B17C3A9DE002FD911 /* lft_nav_bhc.png in Resources */,
-				BA8BBA8D17C3A9E8002FD911 /* login_privacy_btn1.png in Resources */,
 				FFA3EC1217C4C33400BC874C /* chat_login_submit_btn.png in Resources */,
 				FFA3EC2617C4F6CC00BC874C /* iphone4TwitterViewController.xib in Resources */,
 				FFA3EC3017C4FA0500BC874C /* iphone4OpenNewsViewController.xib in Resources */,
