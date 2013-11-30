@@ -97,6 +97,14 @@
     SZActionBar *actionBarDetail;
 
 }
+
+@property (nonatomic)int m;
+@property (nonatomic)int loaderCount;
+@property (nonatomic)int currentScrollPosition;
+@property (nonatomic)int finalCount;
+@property (nonatomic)int TotalNumOfTweets;
+
+
 @property (strong, nonatomic) IBOutlet UIButton *faceBookButton;
 @property (strong, nonatomic) IBOutlet UIButton *twitterButton;
 

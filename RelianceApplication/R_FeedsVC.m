@@ -14,6 +14,7 @@
 
 @implementation R_FeedsVC
 @synthesize FEEDTAG,faceBookButton,twitterButton;
+@synthesize m,loaderCount,currentScrollPosition,finalCount,TotalNumOfTweets;
 CGSize maximumLabelSize;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -91,19 +92,20 @@ CGSize maximumLabelSize;
     
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)DisplayFeedsTweets
+-(void)ScrollLazyLoading
 {
-
-    VideoScrollerTweet			= [[UIScrollView alloc] initWithFrame:CGRectMake(8,100,304,316)];
-	VideoScrollerTweet.userInteractionEnabled	=YES;
-	VideoScrollerTweet.showsHorizontalScrollIndicator = YES;
-    VideoScrollerTweet.delegate=self;
-	VideoScrollerTweet.pagingEnabled = NO;
-	[self.view addSubview:VideoScrollerTweet];
-   
-    int m=0;
-	for (int i =0; i<TotalNumOfTweets; i++)
+    if(TotalNumOfTweets-loaderCount<5)
     {
+        
+        finalCount=TotalNumOfTweets-loaderCount;
+    }
+    
+    
+    
+    
+	for (int i =loaderCount; i<loaderCount+finalCount; i++)
+    {
+        
         NSLog(@"sharetext%@[%d]",shareText[i],i);
         ImagePatchTweet[i] = [[UIImageView alloc] initWithFrame:CGRectMake(1, m+10, 302,194)];
         ImagePatchTweet[i].userInteractionEnabled=YES;
@@ -206,33 +208,155 @@ CGSize maximumLabelSize;
         m+=254;
     }
     
-    VideoScrollerTweet.contentSize = CGSizeMake(304,(254*TotalNumOfTweets+20));
+    //  VideoScrollerTweet.contentSize = CGSizeMake(304,(254*TotalNumOfTweets+20));
+   // VideoScrollerTweet.contentSize = CGSizeMake(304, (254*loaderCount)+550);
+    [activityIndicator stopAnimating];
     
+}
+
+
+-(void)DisplayFeedsTweets
+{
+    
+    [[VideoScrollerTweet subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [VideoScrollerTweet removeFromSuperview];
+    VideoScrollerTweet=nil;
+    
+    VideoScrollerTweet			= [[UIScrollView alloc] initWithFrame:CGRectMake(8,100,304,316)];
+	VideoScrollerTweet.userInteractionEnabled	=YES;
+	VideoScrollerTweet.showsHorizontalScrollIndicator = YES;
+    VideoScrollerTweet.delegate=self;
+	VideoScrollerTweet.pagingEnabled = NO;
+	[self.view addSubview:VideoScrollerTweet];
+    
+    m=0;
+	loaderCount=0;
+    finalCount=5;
+    for (int i =0; i<5; i++)
+    {
+        
+        NSLog(@"sharetext%@[%d]",shareText[i],i);
+        ImagePatchTweet[i] = [[UIImageView alloc] initWithFrame:CGRectMake(1, m+10, 302,194)];
+        ImagePatchTweet[i].userInteractionEnabled=YES;
+        ImagePatchTweet[i].image = [UIImage imageNamed:@"twitter_feed_rightbox.png"];
+        [VideoScrollerTweet addSubview:ImagePatchTweet[i]];
+        ImagePatchTweet[i].tag= i;
+        
+        
+        
+        socializeBgtweet[i] = [[UIView alloc]initWithFrame:CGRectMake(71, 190-44, 231, 44)];
+        socializeBgtweet[i].backgroundColor = [UIColor clearColor];
+        socializeBgtweet[i].layer.cornerRadius = 5.0;
+        socializeBgtweet[i].clipsToBounds = YES;
+        
+        [ImagePatchTweet[i] addSubview:socializeBgtweet[i]];
+        
+        if (tweetActionBar[i] == nil)
+        {
+            NSString *entity_Key= [NSString stringWithFormat:@"%@",shareText[i]];
+            NSString *entity_name= [NSString stringWithFormat:@"%@",shareText[i]];
+            self.entity = [SZEntity entityWithKey:entity_Key name:entity_name];
+            tweetActionBar[i] = [SZActionBar defaultActionBarWithFrame:CGRectZero entity:self.entity viewController:self];
+            tweetActionBar[i].itemsLeft = [NSArray arrayWithObjects:[SZActionButton viewsButton], [tweetActionBar[i].itemsRight objectAtIndex:0], [tweetActionBar[i].itemsRight objectAtIndex:1], nil];
+            // actionBar[i].itemsLeft = [NSArray arrayWithObjects:nil];
+            tweetActionBar[i].tag=i;
+            
+            UIButton * tweet_faceBookBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+            [tweet_faceBookBtn setImage:[UIImage imageNamed:@"share-btn.png"] forState:UIControlStateNormal];
+            [tweet_faceBookBtn sizeToFit];
+            [tweet_faceBookBtn addTarget:self action:@selector(showShareOptions:) forControlEvents:UIControlEventTouchUpInside];
+            tweet_faceBookBtn.tag=i;
+            
+            
+            tweetActionBar[i].betweenButtonsPadding=2.0;
+            tweetActionBar[i].itemsRight = [NSArray arrayWithObjects:tweet_faceBookBtn, nil];
+            
+            
+            [socializeBgtweet[i] addSubview:tweetActionBar[i]];
+        }
+        
+        
+        Th_name_Lbl[i]		=	[[UILabel alloc] initWithFrame:CGRectMake(75, 0,220,140)];
+        Th_name_Lbl[i].text           =  shareText[i];
+        Th_name_Lbl[i].font = [UIFont fontWithName:@"Helvetica Neue, Bold" size: 9.0 ];
+        Th_name_Lbl[i].backgroundColor	=	[UIColor clearColor];
+        Th_name_Lbl[i].textColor        = [UIColor blackColor];
+        Th_name_Lbl[i].lineBreakMode = UILineBreakModeWordWrap;
+        Th_name_Lbl[i].numberOfLines = 8;
+        
+        [ImagePatchTweet[i] addSubview: Th_name_Lbl[i]];
+        
+        
+        tweetView[i] = [[UIView alloc]initWithFrame:CGRectMake(178, m+200, 125, 40)];
+        tweetView[i].backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"color_pacth_400x400.png"]];
+        tweetView[i].tag=i;
+        tweetView[i].alpha=0.0;
+        [VideoScrollerTweet addSubview:tweetView[i]];
+        
+        for (int j=0; j<3; j++) {
+            
+            
+            Publish[j] = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+            Publish[j].userInteractionEnabled=YES;
+            Publish[1].backgroundColor =[UIColor colorWithPatternImage:[UIImage imageNamed:@"ic.png"]];
+            Publish[0].backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"fb_ic12.png"]];
+            Publish[2].backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"emailtweet.png"]];
+            [tweetView[i] addSubview:Publish[j]];
+        }
+        Publish[0].frame = CGRectMake(0, 0, 40, 40);
+        Publish[1].frame = CGRectMake(45, 0, 40, 40);
+        
+        Publish[2].frame = CGRectMake(85, 0, 40 , 40);
+        
+        Publish[0].tag= i;
+        Publish[1].tag=i;
+        Publish[2].tag=i;
+        
+        
+        [Publish[0] addTarget:self action:@selector(fbshare:) forControlEvents:UIControlEventTouchUpInside];
+        [Publish[1] addTarget:self action:@selector(twitter:) forControlEvents:UIControlEventTouchUpInside];
+        [Publish[2] addTarget:self action:@selector(mailCompose:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        
+        if (i%2) {
+            ImagePatchTweet[i].frame = CGRectMake(1, m+10, 302, 194);
+            ImagePatchTweet[i].image= [UIImage imageNamed:@"twitter_feed_leftbox.png"];
+            socializeBgtweet[i].frame = CGRectMake(2,190-44, 231, 44);
+            tweetView[i].frame =CGRectMake(108, m+200, 125, 40);
+            Th_name_Lbl[i].frame = CGRectMake(8, 5, 220, 140);
+            
+            
+            
+            Publish[0].frame = CGRectMake(0, 0, 40, 40);
+            Publish[1].frame = CGRectMake(45, 0, 40, 40);
+            
+            Publish[2].frame = CGRectMake(85, 0, 40, 40);
+            
+        }
+        m+=254;
+    }
+    
+    VideoScrollerTweet.contentSize = CGSizeMake(304,(254*5));
+    loaderCount=loaderCount+5;
     [activityIndicator stopAnimating];
     
     
 }
--(void)DisplayFeeds
+
+-(void)ScrollLazyLoading1
 {
-	
-	[self getdata];
-    NSLog(@"Total number of Rows in FB ===== %d",TotalNumOfRows);
-	infoButton.alpha=1.0;
-	
-	VideoScroller			= [[UIScrollView alloc] initWithFrame:CGRectMake(8,100,304,316)];
-	VideoScroller.userInteractionEnabled	=YES;
-	VideoScroller.showsHorizontalScrollIndicator = YES;
-	VideoScroller.pagingEnabled = NO;
-	[self.view addSubview:VideoScroller];
-	
-       
-	int m=0;
-	
-    
-	for (int i =0; i<TotalNumOfRows; i++)
+    if(TotalNumOfRows-loaderCount<5)
     {
         
-        
+        finalCount=TotalNumOfRows-loaderCount;
+    }
+    
+    
+    
+    
+	for (int i =loaderCount; i<loaderCount+finalCount; i++)
+    {
         
 		NSLog(@"sharetext%@[%d]",shareText[i],i);
 		ImagePatch[i] = [[UIImageView alloc] initWithFrame:CGRectMake(0, m+2, 304,315)];
@@ -260,7 +384,7 @@ CGSize maximumLabelSize;
 		[ImagePatch[i] addSubview: dateLabel[i]];
         
         
-          
+        
         
         if (webwall[i] == nil)
         {
@@ -292,12 +416,11 @@ CGSize maximumLabelSize;
         webViewTapped6.view.tag=i;
         webViewTapped6.delegate = self;
         
-        
         // [webwall[i] addSubview:webViewTapped6];
         [webwall[i] addGestureRecognizer:webViewTapped6];
         
         
-       socializeBg[i] = [[UIView alloc]initWithFrame:CGRectMake(1, 300-44,302,44)];
+        socializeBg[i] = [[UIView alloc]initWithFrame:CGRectMake(1, 300-44,302,44)];
         socializeBg[i].backgroundColor = [UIColor clearColor];
         [ImagePatch[i] addSubview:socializeBg[i]];
         
@@ -337,7 +460,158 @@ CGSize maximumLabelSize;
             [socializeBg[i] addSubview:actionBar[i]];
         }
         
-       
+        
+        
+		
+		Th_name_Lbl[i]		=	[[UILabel alloc] initWithFrame:CGRectMake(1, 202,302,50)];
+		Th_name_Lbl[i].text           =  data1[i];
+		Th_name_Lbl[i].font = [UIFont fontWithName:@"Helvetica Neue, Bold" size: 11.0 ];
+		Th_name_Lbl[i].backgroundColor	=	[UIColor whiteColor];
+		Th_name_Lbl[i].textColor        = [self colorWithHexString:@"564a50"];
+		Th_name_Lbl[i].lineBreakMode = UILineBreakModeWordWrap;
+		Th_name_Lbl[i].numberOfLines = 2;
+		
+		[ImagePatch[i] addSubview: Th_name_Lbl[i]];
+        
+        m+=325;
+		
+	}
+  //  VideoScroller.contentSize = CGSizeMake(304,(325*loaderCount)+700);
+
+	[activityIndicator stopAnimating];
+    
+}
+
+-(void)DisplayFeeds
+{
+	[[VideoScroller subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [VideoScroller removeFromSuperview];
+    VideoScroller=nil;
+    
+	[self getdata];
+    NSLog(@"Total number of Rows in FB ===== %d",TotalNumOfRows);
+	infoButton.alpha=1.0;
+	
+	VideoScroller			= [[UIScrollView alloc] initWithFrame:CGRectMake(8,100,304,316)];
+	VideoScroller.userInteractionEnabled	=YES;
+	VideoScroller.showsHorizontalScrollIndicator = YES;
+	VideoScroller.pagingEnabled = NO;
+    VideoScroller.delegate=self;
+	[self.view addSubview:VideoScroller];
+	
+    
+    m=0;
+	
+    
+    //	for (int i =0; i<TotalNumOfRows; i++)
+    //    {
+    loaderCount=0;
+    finalCount=5;
+    for (int i =0; i<5; i++)
+    {
+		NSLog(@"sharetext%@[%d]",shareText[i],i);
+		ImagePatch[i] = [[UIImageView alloc] initWithFrame:CGRectMake(0, m+2, 304,315)];
+		ImagePatch[i].userInteractionEnabled=YES;
+		ImagePatch[i].image = [UIImage imageNamed:@"fbfeed_blue_bg.png"];
+		[VideoScroller addSubview:ImagePatch[i]];
+		ImagePatch[i].tag= i;
+        
+        movieLabel[i]		=	[[UILabel alloc] initWithFrame:CGRectMake(65, 7,291,17)];
+		movieLabel[i].text           =  data6[i];
+		movieLabel[i].font = [UIFont fontWithName:@"Helvetica Neue, Bold" size: 16.0 ];
+		movieLabel[i].backgroundColor	=	[UIColor clearColor];
+		movieLabel[i].textColor        = [UIColor whiteColor];
+		movieLabel[i].numberOfLines = 1;
+		
+		[ImagePatch[i] addSubview: movieLabel[i]];
+        
+        dateLabel[i]		=	[[UILabel alloc] initWithFrame:CGRectMake(65, 27,291,17)];
+		dateLabel[i].text   =  data5[i];
+		dateLabel[i].font = [UIFont fontWithName:@"Helvetica Neue, Bold" size: 14.0 ];
+		dateLabel[i].backgroundColor	=	[UIColor clearColor];
+		dateLabel[i].textColor        = [self colorWithHexString:@"001644"];
+        dateLabel[i].numberOfLines = 1;
+		
+		[ImagePatch[i] addSubview: dateLabel[i]];
+        
+        
+        
+        
+        if (webwall[i] == nil)
+        {
+            webwall[i] = [[AsyncImageView alloc] initWithFrame:CGRectMake(6, 52, 295,145)];
+            
+            webwall[i].contentMode = UIViewContentModeScaleToFill;
+        }
+        
+        NSString * newString = [data[i] stringByReplacingOccurrencesOfString:@"_s" withString:@"_n"];
+        
+        NSLog(@"xx=%@xx",newString);
+        
+        
+        
+        webwall[i].contentMode = UIViewContentModeScaleToFill;
+        webwall[i].userInteractionEnabled=YES;
+        
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:webwall[i]];
+        
+        webwall[i].tag=i;
+        NSURL *url1 = [NSURL URLWithString:newString];
+        NSLog(@"nsurl = %@",url1);
+        ((AsyncImageView *)webwall[i]).imageURL =url1;
+        [ImagePatch[i] addSubview:webwall[i]];
+        
+        UITapGestureRecognizer *webViewTapped6 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(OpenFeed:)];
+        webViewTapped6.numberOfTapsRequired = 1;
+        
+        webViewTapped6.view.tag=i;
+        webViewTapped6.delegate = self;
+        
+        // [webwall[i] addSubview:webViewTapped6];
+        [webwall[i] addGestureRecognizer:webViewTapped6];
+        
+        
+        socializeBg[i] = [[UIView alloc]initWithFrame:CGRectMake(1, 300-44,302,44)];
+        socializeBg[i].backgroundColor = [UIColor clearColor];
+        [ImagePatch[i] addSubview:socializeBg[i]];
+        
+        if (actionBar[i] == nil)
+        {
+            
+            NSString *entity_Key= [NSString stringWithFormat:@"%@",fbFeedId[i]];
+            NSString *entity_name= [NSString stringWithFormat:@"%@",data3[i]];
+            self.entity = [SZEntity entityWithKey:entity_Key name:entity_name];
+            actionBar[i] = [SZActionBar defaultActionBarWithFrame:CGRectZero entity:self.entity viewController:self];
+            actionBar[i].itemsLeft = [NSArray arrayWithObjects: [SZActionButton viewsButton],[actionBar[i].itemsRight objectAtIndex:0], [actionBar[i].itemsRight objectAtIndex:1], nil];
+            // actionBar[i].itemsLeft = [NSArray arrayWithObjects:nil];
+            actionBar[i].tag=i;
+            
+            UIButton *faceBookBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+            [faceBookBtn setImage:[UIImage imageNamed:@"socialize-selectnetwork-facebook-icon.png"] forState:UIControlStateNormal];
+            [faceBookBtn sizeToFit];
+            [faceBookBtn addTarget:self action:@selector(fbshare:) forControlEvents:UIControlEventTouchUpInside];
+            faceBookBtn.tag=i;
+            
+            
+            UIButton *twitterBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+            [twitterBtn setImage:[UIImage imageNamed:@"socialize-selectnetwork-twitter-icon.png"] forState:UIControlStateNormal];
+            [twitterBtn sizeToFit];
+            [twitterBtn addTarget:self action:@selector(twitter:) forControlEvents:UIControlEventTouchUpInside];
+            twitterBtn.tag=i;
+            
+            
+            UIButton *emailBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+            [emailBtn setImage:[UIImage imageNamed:@"socialize-selectnetwork-email-icon.png"] forState:UIControlStateNormal];
+            [emailBtn sizeToFit];
+            [emailBtn addTarget:self action:@selector(mailCompose:) forControlEvents:UIControlEventTouchUpInside];
+            emailBtn.tag=i;
+            
+            actionBar[i].betweenButtonsPadding=5.0;
+            actionBar[i].itemsRight = [NSArray arrayWithObjects:faceBookBtn, twitterBtn,emailBtn, nil];
+            [socializeBg[i] addSubview:actionBar[i]];
+        }
+        
+        
         
 		
 		Th_name_Lbl[i]		=	[[UILabel alloc] initWithFrame:CGRectMake(1, 202,302,50)];
@@ -354,9 +628,48 @@ CGSize maximumLabelSize;
 		
 	}
 	
-	VideoScroller.contentSize = CGSizeMake(304,325*TotalNumOfRows+20);
-	
+	VideoScroller.contentSize = CGSizeMake(304,(325*5));
+	loaderCount=loaderCount+5;
 	[activityIndicator stopAnimating];
+    
+    twitterButton.userInteractionEnabled=YES;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+
+{
+    //  [activityIndicator2 stopAnimating];
+    // activityIndicator2.alpha = 0.0;
+    
+    if (scrollView == VideoScrollerTweet) {
+        
+                if (TotalNumOfTweets -loaderCount >0) {
+      //      NSLog(@"lazy loading called");
+            
+            currentScrollPosition= VideoScrollerTweet.contentOffset.y;
+            if ( (currentScrollPosition = VideoScrollerTweet.contentSize.height)) {
+                VideoScrollerTweet.contentSize = CGSizeMake(304, (254*loaderCount)+1300);
+                
+                [self ScrollLazyLoading];
+                loaderCount=loaderCount+finalCount;
+            }
+        }
+    }
+    
+    if (scrollView==VideoScroller) {
+        
+               if (TotalNumOfRows -loaderCount >0) {
+            NSLog(@"lazy loading called");
+            
+            currentScrollPosition= VideoScroller.contentOffset.y;
+            if ( (currentScrollPosition = VideoScroller.contentSize.height)) {
+                VideoScroller.contentSize = CGSizeMake(304, (325*loaderCount)+1100);
+                
+                [self ScrollLazyLoading1];
+                loaderCount=loaderCount+finalCount;
+            }
+        }
+    }
 }
 
 
