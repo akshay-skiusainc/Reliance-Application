@@ -967,7 +967,7 @@ CGSize maximumLabelSize;
 
             [self DisplayFeeds];
             twitterButton.userInteractionEnabled=YES;
-//
+////
             VideoScroller.alpha = 1.0;
             VideoScrollerTweet.alpha = 0.0;
         });
