@@ -24,7 +24,7 @@
 @interface R_Home_5 : DatabaseClass<UIGestureRecognizerDelegate,UIScrollViewDelegate>
 {
     int n ;
-    
+  //
     CGFloat newOffset;
     NSTimer *progressUpdateTimer;
     UIActivityIndicatorView     *activityIndicator[100];
