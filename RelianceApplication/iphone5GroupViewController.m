@@ -411,14 +411,15 @@
 
 -(void)getdata
 {
-	GlobalClass *obj=[GlobalClass getInstance];
+    GlobalClass *obj=[GlobalClass getInstance];
 	NSLog(@"ddata=%@",obj.groups);
   	int i=0;
-	for (NSDictionary *actoAgent in obj.groups)
-	{
-        
-        if ([obj.Leftcheck isEqualToString:@"1"])
+    if ([obj.Leftcheck isEqualToString:@"1"])
+    {
+        for (NSDictionary *actoAgent in obj.rel_groups)
         {
+            
+            
             data1[i]= [actoAgent objectForKey:@"cg_id"];
             NSLog(@"cg_id=%@",data1[i]);
             
@@ -434,33 +435,36 @@
             NSLog(@"cg_img=%@",data4[i]);
             data10[i]= [actoAgent objectForKey:@"status"];
             NSLog(@"status=%@",data10[i]);
-
+            
             i++;
         }
         
-        
-        else{
-
-		data1[i]= [actoAgent objectForKey:@"id"];
-		NSLog(@"id=%@",data1[i]);
-		
-		data2[i]= [actoAgent objectForKey:@"grp_name"];
-		NSLog(@"grp_name=%@",data2[i]);
-		
-		
-		data3[i]= [actoAgent objectForKey:@"openfire_service"];
-		NSLog(@"openfire_service=%@",data3[i]);
-		
-		
-		data4[i]= [actoAgent objectForKey:@"grp_image"];
-		NSLog(@"grp_image=%@",data4[i]);
-		data10[i]= [actoAgent objectForKey:@"status"];
-		NSLog(@"status=%@",data10[i]);
+    }
+    else
+    {
+        for (NSDictionary *actoAgent in obj.groups)
+        {
+            data1[i]= [actoAgent objectForKey:@"id"];
+            NSLog(@"id=%@",data1[i]);
+            
+            data2[i]= [actoAgent objectForKey:@"grp_name"];
+            NSLog(@"grp_name=%@",data2[i]);
+            
+            
+            data3[i]= [actoAgent objectForKey:@"openfire_service"];
+            NSLog(@"openfire_service=%@",data3[i]);
+            
+            
+            data4[i]= [actoAgent objectForKey:@"grp_image"];
+            NSLog(@"grp_image=%@",data4[i]);
+            data10[i]= [actoAgent objectForKey:@"status"];
+            NSLog(@"status=%@",data10[i]);
        		
-		i++;
+            i++;
         }
 	}
 	TotalData=i;
+    
 	
 }
 

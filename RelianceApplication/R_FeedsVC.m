@@ -1001,7 +1001,7 @@ CGSize maximumLabelSize;
         
         GlobalClass *obj=[GlobalClass getInstance];
         
-        NSString* urlString = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/ rel_twitter_tweets.php?deviceno=%@",obj.dev];
+        NSString* urlString = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/rel_twitter_tweets.php?deviceno=%@",obj.dev];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlString] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
         
         //    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];

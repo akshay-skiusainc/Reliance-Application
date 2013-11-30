@@ -411,11 +411,12 @@
     GlobalClass *obj=[GlobalClass getInstance];
 	NSLog(@"ddata=%@",obj.groups);
   	int i=0;
-	for (NSDictionary *actoAgent in obj.groups)
-	{
-        
-        if ([obj.Leftcheck isEqualToString:@"1"])
+    if ([obj.Leftcheck isEqualToString:@"1"])
+    {
+        for (NSDictionary *actoAgent in obj.rel_groups)
         {
+        
+        
             data1[i]= [actoAgent objectForKey:@"cg_id"];
             NSLog(@"cg_id=%@",data1[i]);
             
@@ -435,9 +436,11 @@
             i++;
         }
         
-        
-        else{
-            
+    }
+        else
+        {
+            for (NSDictionary *actoAgent in obj.groups)
+            {
             data1[i]= [actoAgent objectForKey:@"id"];
             NSLog(@"id=%@",data1[i]);
             
