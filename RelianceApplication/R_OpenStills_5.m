@@ -137,9 +137,7 @@
         if([data9[a]isEqualToString:movieName])
         {
         
-     
-        
-        shareText=[NSString stringWithFormat:@"%@",data3[imgIndex]];
+             shareText=[NSString stringWithFormat:@"%@",data3[imgIndex]];
         
         
         
@@ -170,13 +168,19 @@
         
         NSURL *url1 = [NSURL URLWithString:data1[a]];
         
-        
-        
-        ((AsyncImageView *)view2[a]).imageURL =url1;
-        
-        [imageScroller addSubview:view2[a]];
-        
-        
+            if([data4[a] isEqualToString:@"1"])
+            {
+                ((AsyncImageView *)view2[a]).image =[UIImage imageNamed:@"premi_wall_ip4.png"];
+                [imageScroller addSubview:view2[a]];
+                
+            }
+            else
+            {
+                ((AsyncImageView *)view2[a]).imageURL =url1;
+                
+                [imageScroller addSubview:view2[a]];
+
+               
         UIView *wallpaperView = [[UIView alloc] initWithFrame:CGRectMake(m+0, 0, 320.0f, 504.0f)];
         
         wallpaperView.backgroundColor=[UIColor clearColor];
@@ -185,6 +189,7 @@
         
         [imageScroller addSubview:wallpaperView];
         
+            
              
         socializeBg[a] = [[UIView alloc]initWithFrame:CGRectMake(0, 504-44, 320, 44)];
         socializeBg[a].backgroundColor = [UIColor clearColor];
@@ -252,6 +257,13 @@
             [downloadHD[a] addTarget:self action:@selector(downloadHDButton:) forControlEvents:UIControlEventTouchUpInside];
             
             [wallpaperView addSubview:downloadHD[a]];
+           
+//            if([data10[a] isEqualToString:@"1"])
+//            {
+//                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320,416)];
+//                lockImage.image = [UIImage imageNamed:@"premi_all.png.png"];
+//                [view2[a] addSubview:lockImage];
+            }
             
         m=m+320;
         
@@ -259,8 +271,6 @@
         
         else if([movieName isEqualToString:@"All"])
         {
-            
-        
             
             shareText=[NSString stringWithFormat:@"%@",data3[imgIndex]];
             
@@ -293,13 +303,19 @@
             
             NSURL *url1 = [NSURL URLWithString:data1[a]];
             
-            
-            
-            ((AsyncImageView *)view2[a]).imageURL =url1;
-            
-            [imageScroller addSubview:view2[a]];
-            
-            
+            if([data4[a] isEqualToString:@"1"])
+            {
+                ((AsyncImageView *)view2[a]).image =[UIImage imageNamed:@"premi_wall_ip4.png"];
+                [imageScroller addSubview:view2[a]];
+                
+            }
+            else
+            {
+                ((AsyncImageView *)view2[a]).imageURL =url1;
+                
+                [imageScroller addSubview:view2[a]];
+                
+                    
             UIView *wallpaperView = [[UIView alloc] initWithFrame:CGRectMake(m+0, 0, 320.0f, 504.0f)];
             
             wallpaperView.backgroundColor=[UIColor clearColor];
@@ -308,7 +324,8 @@
             
             [imageScroller addSubview:wallpaperView];
             
-            
+           
+
             socializeBg[a] = [[UIView alloc]initWithFrame:CGRectMake(0, 504-44, 320, 44)];
             socializeBg[a].backgroundColor = [UIColor clearColor];
             [wallpaperView addSubview:socializeBg[a]];
@@ -374,7 +391,12 @@
             [downloadHD[a] addTarget:self action:@selector(downloadHDButton:) forControlEvents:UIControlEventTouchUpInside];
             
             [wallpaperView addSubview:downloadHD[a]];
-            
+//            if([data10[a] isEqualToString:@"1"])
+//            {
+//                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 320,416)];
+//                lockImage.image = [UIImage imageNamed:@"premi_all.png.png"];
+//                [view2[a] addSubview:lockImage];
+            }
             m=m+320;
             
         }
