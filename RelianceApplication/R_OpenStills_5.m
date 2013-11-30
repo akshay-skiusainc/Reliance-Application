@@ -198,7 +198,7 @@
         
         
         
-        ///// SZActionBar *actionBar=[[SZActionBar alloc]initWithFrame:CGRectZero entity:self.entity viewController:self];
+        /////// SZActionBar *actionBar=[[SZActionBar alloc]initWithFrame:CGRectZero entity:self.entity viewController:self];
         
         if (actionBar[a] == nil)
         {
