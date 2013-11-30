@@ -36,7 +36,8 @@
     NSString    *twtsharetext;
     
     NSString    *mailsharesub;
-    
+    UIImageView *lockImage;
+
     
     
     NSString    *mailsharetext;

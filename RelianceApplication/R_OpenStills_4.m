@@ -165,13 +165,19 @@
             
             NSURL *url1 = [NSURL URLWithString:data1[a]];
             
-            
-            
-            ((AsyncImageView *)view2[a]).imageURL =url1;
-            
-            [imageScroller addSubview:view2[a]];
-            
-            
+            if([data4[a] isEqualToString:@"1"])
+            {
+                ((AsyncImageView *)view2[a]).image =[UIImage imageNamed:@"premi_wall_ip4.png"];
+                [imageScroller addSubview:view2[a]];
+            }
+            else
+            {
+                ((AsyncImageView *)view2[a]).imageURL =url1;
+                
+                [imageScroller addSubview:view2[a]];
+                
+                
+
             UIView *wallpaperView = [[UIView alloc] initWithFrame:CGRectMake(m+0, 0, 320.0f, 416.0f)];
             
             wallpaperView.backgroundColor=[UIColor clearColor];
@@ -179,6 +185,7 @@
             wallpaperView.tag=a;
             
             [imageScroller addSubview:wallpaperView];
+                       
             
             socializeBg[a] = [[UIView alloc]initWithFrame:CGRectMake(0, 416-44, 320, 44)];
             socializeBg[a].backgroundColor = [UIColor clearColor];
@@ -244,6 +251,12 @@
             [downloadHD[a] addTarget:self action:@selector(downloadHDButton:) forControlEvents:UIControlEventTouchUpInside];
             
             [wallpaperView addSubview:downloadHD[a]];
+           
+            
+                
+            }
+        
+        
             m=m+320;
             
         }
@@ -285,10 +298,18 @@
             NSURL *url1 = [NSURL URLWithString:data1[a]];
             
             
-            
-            ((AsyncImageView *)view2[a]).imageURL =url1;
-            
-            [imageScroller addSubview:view2[a]];
+            if([data4[a] isEqualToString:@"1"])
+            {
+                ((AsyncImageView *)view2[a]).image =[UIImage imageNamed:@"premi_wall_ip4.png"];
+                [imageScroller addSubview:view2[a]];
+                
+            }
+            else
+            {
+                ((AsyncImageView *)view2[a]).imageURL =url1;
+                
+                [imageScroller addSubview:view2[a]];
+
             
             
             UIView *wallpaperView = [[UIView alloc] initWithFrame:CGRectMake(m+0, 0, 320.0f, 416.0f)];
@@ -299,7 +320,8 @@
             
             [imageScroller addSubview:wallpaperView];
             
-            
+           
+         
             socializeBg[a] = [[UIView alloc]initWithFrame:CGRectMake(0, 416-44, 320, 44)];
             socializeBg[a].backgroundColor = [UIColor clearColor];
             [wallpaperView addSubview:socializeBg[a]];
@@ -364,6 +386,8 @@
             [downloadHD[a] addTarget:self action:@selector(downloadHDButton:) forControlEvents:UIControlEventTouchUpInside];
             
             [wallpaperView addSubview:downloadHD[a]];
+            
+            }
             m=m+320;
             
         }

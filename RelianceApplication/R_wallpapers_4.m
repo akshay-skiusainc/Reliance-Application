@@ -615,7 +615,7 @@
             if([data10[a] isEqualToString:@"1"])
             {
                 lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                lockImage.image = [UIImage imageNamed:@"premi_video.png"];
+                lockImage.image = [UIImage imageNamed:@"premi_wall_ip4.png"];
                 [view3[a] addSubview:lockImage];
             }
             
@@ -701,7 +701,7 @@
             if([data10[a] isEqualToString:@"1"])
             {
                 lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                lockImage.image = [UIImage imageNamed:@"premi_video.png"];
+                lockImage.image = [UIImage imageNamed:@"premi_wall_ip4.png"];
                 [view3[a] addSubview:lockImage];
             }
             
@@ -834,7 +834,7 @@
             if([data10[a] isEqualToString:@"1"])
             {
                 lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                lockImage.image = [UIImage imageNamed:@"premi_video.png"];
+                lockImage.image = [UIImage imageNamed:@"premi_wall_ip4.png"];
                 [view3[a] addSubview:lockImage];
             }
             
@@ -934,7 +934,7 @@
                 if([data10[a] isEqualToString:@"1"])
                 {
                     lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                    lockImage.image = [UIImage imageNamed:@"premi_video.png"];
+                    lockImage.image = [UIImage imageNamed:@"premi_wall_ip4.png"];
                     [view3[a] addSubview:lockImage];
                 }
                 
@@ -1328,10 +1328,17 @@
             NSURL *url1 = [NSURL URLWithString:data1[a]];
             
             
-            
-            ((AsyncImageView *)view2[a]).imageURL =url1;
-            
-            [imageScroller addSubview:view2[a]];
+            if([data10[a] isEqualToString:@"1"])
+            {
+                ((AsyncImageView *)view2[a]).image =[UIImage imageNamed:@"premi_wall_ip4.png"];
+                [imageScroller addSubview:view2[a]];
+                
+            }
+            else
+            {
+                ((AsyncImageView *)view2[a]).imageURL =url1;
+                
+                [imageScroller addSubview:view2[a]];
             
             
             UIView *wallpaperView = [[UIView alloc] initWithFrame:CGRectMake(m+0, 0, 320.0f, 416.0f)];
@@ -1410,6 +1417,8 @@
             
             [wallpaperView addSubview:downloadHD[a]];
 
+                    }
+            
             m=m+320;
             
         }
@@ -1447,10 +1456,17 @@
             NSURL *url1 = [NSURL URLWithString:data1[a]];
             
             
-            
-            ((AsyncImageView *)view2[a]).imageURL =url1;
-            
-            [imageScroller addSubview:view2[a]];
+            if([data10[a] isEqualToString:@"1"])
+            {
+                ((AsyncImageView *)view2[a]).image =[UIImage imageNamed:@"premi_wall_ip4.png"];
+                [imageScroller addSubview:view2[a]];
+                
+            }
+            else
+            {
+                ((AsyncImageView *)view2[a]).imageURL =url1;
+                
+                [imageScroller addSubview:view2[a]];
             
             
             UIView *wallpaperView = [[UIView alloc] initWithFrame:CGRectMake(m+0, 0, 320.0f, 416.0f)];
@@ -1525,6 +1541,8 @@
             [downloadHD[a] addTarget:self action:@selector(downloadHDButton:) forControlEvents:UIControlEventTouchUpInside];
             
             [wallpaperView addSubview:downloadHD[a]];
+
+                      }
 
             m=m+320;
             
