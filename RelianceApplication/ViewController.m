@@ -555,6 +555,9 @@
             
         }
 		 */
+            
+            obj.MOVIE_DATA=@"1";
+
 		
 	}
     
@@ -566,7 +569,6 @@
    activityIndicator=nil;
     [activityIndicator removeFromSuperview];
 	[self performSelector:@selector(logincalled:) withObject:nil afterDelay:0.0];
-        obj.MOVIE_DATA=@"1";
 //        obj.REL_DATA=@"0";
 
 
@@ -808,7 +810,8 @@ NSLog(@"data already fetched");
             
             GlobalClass *OBJ=[GlobalClass getInstance];
             OBJ.fetchall=@"1";
-            
+                obj.REL_DATA=@"1";
+ 
             
         }
         
@@ -823,7 +826,6 @@ NSLog(@"data already fetched");
         
 //        [self.navigationController setNavigationBarHidden:YES animated:YES];
 //        [self dismissViewControllerAnimated:NO completion:nil];
-        obj.REL_DATA=@"1";
 //        obj.MOVIE_DATA=@"0";
 
 

@@ -94,8 +94,8 @@
     NSLog(@"iphone4viewcontroller called ***************************");
 	
 	GlobalClass *obj=[GlobalClass getInstance];
-    if ([obj.REL_DATA isEqualToString:@"0"]) {
-        
+//    if ([obj.REL_DATA isEqualToString:@"0"]) {
+    
         NSString*   post = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/fetch_all_rel_ios.php?deviceno=%@",obj.dev];
         
         
@@ -318,7 +318,7 @@
             }
             
         }
-    }
+//    }
     
 }
 
@@ -360,6 +360,21 @@
     
     [self DisplayVideos];
     [self DisplayFilmStills];
+    if (check==1) {
+        VideoScroller.alpha=0.0;
+        [_trailersButton setBackgroundImage:[UIImage imageNamed:@"trailers_btn.png"] forState:UIControlStateNormal];
+        [_filmStillButton setBackgroundImage:[UIImage imageNamed:@"stills_btn.png"] forState:UIControlStateNormal];
+//        [self DisplayFilmStills];
+        check=1;
+        
+    }
+    else if(check==0){
+        Scroller.alpha = 0.0;
+        [_trailersButton setBackgroundImage:[UIImage imageNamed:@"trailers_btn_h.png"] forState:UIControlStateNormal];
+        [_filmStillButton setBackgroundImage:[UIImage imageNamed:@"stills_btn_h.png"] forState:UIControlStateNormal];
+        
+    }
+
 }
 
 - (void)viewDidLoad
@@ -861,11 +876,16 @@
             
             
             
+            
             if ([data11[i] isEqualToString:@"1"])
             {
-                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
-                lockImage.image = [UIImage imageNamed:@"premi_video.png"];
-                [webwall[i] addSubview:lockImage];
+                lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
+                lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
+                [webwall[i] addSubview:lockImage[i]];
+            }
+            else
+            {
+                lockImage[i].image=[UIImage imageNamed:@""];
             }
             m+=275;
             
@@ -895,7 +915,7 @@
 
 -(void)DisplayVideos
 {
-    
+    checksection=0;
     [[VideoScroller subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [VideoScroller removeFromSuperview];
     VideoScroller=nil;
@@ -975,12 +995,17 @@
                 
                 
                 
-                if ([data11[i] isEqualToString:@"1"])
-                {
-                    lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
-                    lockImage.image = [UIImage imageNamed:@"premi_video.png"];
-                    [webwall[i] addSubview:lockImage];
-                }
+            
+            if ([data11[i] isEqualToString:@"1"])
+            {
+                lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
+                lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
+                [webwall[i] addSubview:lockImage[i]];
+            }
+            else
+            {
+                lockImage[i].image=[UIImage imageNamed:@""];
+            }
                 m+=275;
                 
             }
@@ -1048,12 +1073,17 @@
         
         
         
-        if ([data11[i] isEqualToString:@"1"])
-        {
-            lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
-            lockImage.image = [UIImage imageNamed:@"premi_video.png"];
-            [webwall[i] addSubview:lockImage];
-        }
+            
+            if ([data11[i] isEqualToString:@"1"])
+            {
+                lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
+                lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
+                [webwall[i] addSubview:lockImage[i]];
+            }
+            else
+            {
+                lockImage[i].image=[UIImage imageNamed:@""];
+            }
   		m+=275;
 		
         }
@@ -1176,11 +1206,15 @@
             
             if ([data11[a] isEqualToString:@"1"])
             {
-                lockImageStills = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 314,200)];
-                lockImageStills.image = [UIImage imageNamed:@"premi_video.png"];
-                [view3[a] addSubview:lockImageStills];
+                lockImageStills[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 314,200)];
+                lockImageStills[a].image = [UIImage imageNamed:@"premi_video.png"];
+                [view3[a] addSubview:lockImageStills[a]];
             }
-            
+            else
+            {
+                
+                lockImageStills[a].image= [UIImage imageNamed:@""];
+            }
             nX = nX+160;
             nY = nY+226;
             
@@ -1263,14 +1297,19 @@
             
             
             
+                      
             if ([data11[a] isEqualToString:@"1"])
             {
-                lockImageStills = [[UIImageView alloc]initWithFrame:CGRectMake(nX, nY, 150,200)];
-                lockImageStills.image = [UIImage imageNamed:@"premi_video.png"];
-                [view3[a] addSubview:lockImageStills];
+                lockImageStills[a] = [[UIImageView alloc]initWithFrame:CGRectMake(nX,nY,150,200)];
+                lockImageStills[a].image = [UIImage imageNamed:@"premi_video.png"];
+                [view3[a] addSubview:lockImageStills[a]];
             }
-            
-            
+            else
+            {
+                
+                lockImageStills[a].image= [UIImage imageNamed:@""];
+            }
+
             
             nX = nX+160;
             nY = nY+226;
@@ -1304,7 +1343,8 @@
 
 -(void)DisplayFilmStills
 {
-    
+    checksection=1;
+
     
     [[Scroller subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [Scroller removeFromSuperview];
@@ -1412,11 +1452,14 @@
             
             if ([data15[a] isEqualToString:@"1"])
             {
-                lockImageStills = [[UIImageView alloc]initWithFrame:CGRectMake(0,0, 150.0, 207.0)];
-                lockImageStills.image = [UIImage imageNamed:@"premi_video.png"];
-                [view3[a] addSubview:lockImageStills];
+                lockImageStills[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0,0, 150.0, 207.0)];
+                lockImageStills[a].image = [UIImage imageNamed:@"premi_video.png"];
+                [view3[a] addSubview:lockImageStills[a]];
             }
-            
+            else
+            {
+                lockImageStills[a].image =[UIImage imageNamed:@""];
+            }
             
             
             nX = nX+160;
@@ -1515,11 +1558,14 @@
             
             if ([data15[a] isEqualToString:@"1"])
             {
-                lockImageStills = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,207)];
-                lockImageStills.image = [UIImage imageNamed:@"premi_video.png"];
-                [view3[a] addSubview:lockImageStills];
+                lockImageStills[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,207)];
+                lockImageStills[a].image = [UIImage imageNamed:@"premi_video.png"];
+                [view3[a] addSubview:lockImageStills[a]];
             }
-            
+            else
+            {
+                lockImageStills[a].image= [UIImage imageNamed:@""];
+            }
             nX = nX+160;
             nY = nY+226;
             

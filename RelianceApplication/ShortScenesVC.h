@@ -71,7 +71,7 @@
     
     NSString    *mailsharetext;
     
-    UIImageView *lockImage;
+    UIImageView *lockImage[1000];
     UIImageView *premiumImage;
     NSArray *_products;
     NSNumberFormatter * _priceFormatter;

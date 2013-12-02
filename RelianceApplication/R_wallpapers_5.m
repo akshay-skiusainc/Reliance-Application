@@ -128,7 +128,6 @@
     NSLog(@"iphone4viewcontroller called ***************************");
 	
 	GlobalClass *obj=[GlobalClass getInstance];
-    if ([obj.REL_DATA isEqualToString:@"0"]) {
         
         NSString*   post = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/fetch_all_rel_ios.php?deviceno=%@",obj.dev];
         
@@ -352,7 +351,6 @@
             }
             
         }
-    }
     
 }
 
@@ -616,11 +614,16 @@
             
             [view3[a] addGestureRecognizer:webViewTapped];
             
+            
             if([data10[a] isEqualToString:@"1"])
             {
-                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                lockImage.image = [UIImage imageNamed:@"premi_all.png"];
-                [view3[a] addSubview:lockImage];
+                lockImage[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                lockImage[a].image = [UIImage imageNamed:@"premi_wall_ip4.png"];
+                [view3[a] addSubview:lockImage[a]];
+            }
+            else
+            {
+                lockImage[a].image= [UIImage imageNamed:@""];
             }
             MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
             MovieLabelStills[a].backgroundColor =[UIColor clearColor];
@@ -700,11 +703,16 @@
             webViewTapped.delegate = self;
             
             [view3[a] addGestureRecognizer:webViewTapped];
+            
             if([data10[a] isEqualToString:@"1"])
             {
-                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                lockImage.image = [UIImage imageNamed:@"premi_all.png"];
-                [view3[a] addSubview:lockImage];
+                lockImage[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                lockImage[a].image = [UIImage imageNamed:@"premi_wall_ip4.png"];
+                [view3[a] addSubview:lockImage[a]];
+            }
+            else
+            {
+                lockImage[a].image= [UIImage imageNamed:@""];
             }
             
             MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
@@ -836,11 +844,16 @@
             
             [view3[a] addGestureRecognizer:webViewTapped];
             
+            
             if([data10[a] isEqualToString:@"1"])
             {
-                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                lockImage.image = [UIImage imageNamed:@"premi_all.png"];
-                [view3[a] addSubview:lockImage];
+                lockImage[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                lockImage[a].image = [UIImage imageNamed:@"premi_wall_ip4.png"];
+                [view3[a] addSubview:lockImage[a]];
+            }
+            else
+            {
+                lockImage[a].image= [UIImage imageNamed:@""];
             }
             
             MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
@@ -935,11 +948,16 @@
                 webViewTapped.delegate = self;
                 
                 [view3[a] addGestureRecognizer:webViewTapped];
+                
                 if([data10[a] isEqualToString:@"1"])
                 {
-                    lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                    lockImage.image = [UIImage imageNamed:@"premi_all.png"];
-                    [view3[a] addSubview:lockImage];
+                    lockImage[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                    lockImage[a].image = [UIImage imageNamed:@"premi_wall_ip4.png"];
+                    [view3[a] addSubview:lockImage[a]];
+                }
+                else
+                {
+                    lockImage[a].image= [UIImage imageNamed:@""];
                 }
                 
                 MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
