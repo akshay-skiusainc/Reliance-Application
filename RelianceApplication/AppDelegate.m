@@ -250,7 +250,6 @@ static NSString *const kTrackingId = @"UA-42554692-1";
 	
 	GlobalClass *obj1=[GlobalClass getInstance];
 	obj1.dev=deviceToken1;
-//    obj1.dev=@"TESTINKGAKXCSHAYss1SIjsjaa0";
 
     
     //	DatabaseClass *test= [[DatabaseClass alloc] init];

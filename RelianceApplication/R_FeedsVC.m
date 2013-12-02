@@ -251,8 +251,8 @@ CGSize maximumLabelSize;
         
         [ImagePatchTweet[i] addSubview:socializeBgtweet[i]];
         
-        if (tweetActionBar[i] == nil)
-        {
+//        if (tweetActionBar[i] == nil)
+//        {
             NSString *entity_Key= [NSString stringWithFormat:@"%@",shareText[i]];
             NSString *entity_name= [NSString stringWithFormat:@"%@",shareText[i]];
             self.entity = [SZEntity entityWithKey:entity_Key name:entity_name];
@@ -273,7 +273,7 @@ CGSize maximumLabelSize;
             
             
             [socializeBgtweet[i] addSubview:tweetActionBar[i]];
-        }
+//        }
         
         
         Th_name_Lbl[i]		=	[[UILabel alloc] initWithFrame:CGRectMake(75, 0,220,140)];
@@ -575,9 +575,9 @@ CGSize maximumLabelSize;
         socializeBg[i].backgroundColor = [UIColor clearColor];
         [ImagePatch[i] addSubview:socializeBg[i]];
         
-        if (actionBar[i] == nil)
-        {
-            
+//        if (actionBar[i] == nil)
+//        {
+//            
             NSString *entity_Key= [NSString stringWithFormat:@"%@",fbFeedId[i]];
             NSString *entity_name= [NSString stringWithFormat:@"%@",data3[i]];
             self.entity = [SZEntity entityWithKey:entity_Key name:entity_name];
@@ -609,7 +609,7 @@ CGSize maximumLabelSize;
             actionBar[i].betweenButtonsPadding=5.0;
             actionBar[i].itemsRight = [NSArray arrayWithObjects:faceBookBtn, twitterBtn,emailBtn, nil];
             [socializeBg[i] addSubview:actionBar[i]];
-        }
+//        }
         
         
         
@@ -880,8 +880,8 @@ CGSize maximumLabelSize;
 
     check_on=1;
 
-    if (check1==0) {
-        
+//    if (check1==0) {
+    
         check1=1;
 
     VideoScroller.alpha = 1.0;
@@ -975,12 +975,12 @@ CGSize maximumLabelSize;
         
     });
         
-    }
+//    }
     
     
-    else{
-        
-    }
+//    else{
+//        
+//    }
 	
 }
 
@@ -991,7 +991,7 @@ CGSize maximumLabelSize;
 
     check_on=0;
 
-    if (check==0) {
+//    if (check==0) {
         check=1;
     VideoScroller.alpha = 0.0;
     
@@ -1052,13 +1052,13 @@ CGSize maximumLabelSize;
         
     });
         
-    }
-    
-    
-    else
-    {
-        
-    }
+//    }
+//    
+//    
+//    else
+//    {
+//        
+//    }
 }
 
 
@@ -1494,22 +1494,30 @@ CGSize maximumLabelSize;
 
 - (IBAction)faceBookFeed:(id)sender {
     
+    [[VideoScroller subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [VideoScroller removeFromSuperview];
+    VideoScroller=nil;
+    
+    [[VideoScrollerTweet subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [VideoScrollerTweet removeFromSuperview];
+    VideoScrollerTweet=nil;
+
     check_on=1;
     
     [faceBookButton setBackgroundImage:[UIImage imageNamed:@"fbfeed_btn_black.png"] forState:UIControlStateNormal];
     [twitterButton setBackgroundImage:[UIImage imageNamed:@"twitter_btn.png"] forState:UIControlStateNormal];
     
-    if(TotalNumOfRows==0)
-    {
+//    if(TotalNumOfRows==0)
+//    {
         [activityIndicator startAnimating];
         
         [self performSelector:@selector(fetchAllData) withObject:nil afterDelay:0.0];
-        
-    }
-    else
-    {
-        
-    }
+//        
+//    }
+//    else
+//    {
+//        
+//    }
     VideoScrollerTweet.alpha = 0.0;
     
     VideoScroller.alpha = 1.0;
@@ -1517,22 +1525,31 @@ CGSize maximumLabelSize;
 }
 
 - (IBAction)twitterFeed:(id)sender {
+    
+    [[VideoScroller subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [VideoScroller removeFromSuperview];
+    VideoScroller=nil;
+    
+    [[VideoScrollerTweet subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [VideoScrollerTweet removeFromSuperview];
+    VideoScrollerTweet=nil;
+
     check_on=0;
 
     [faceBookButton setBackgroundImage:[UIImage imageNamed:@"fb_btn.png"] forState:UIControlStateNormal];
     [twitterButton setBackgroundImage:[UIImage imageNamed:@"twitter_btn_h.png"] forState:UIControlStateNormal];
     
-    if(TotalNumOfTweets==0)
-    {
+//    if(TotalNumOfTweets==0)
+//    {
         [activityIndicator startAnimating];
         
         [self performSelector:@selector(Fetchtwt) withObject:nil afterDelay:0.0];
-    }
-    else
-    {
-        
-    }
-    
+//    }
+//    else
+//    {
+//        
+//    }
+
     VideoScroller.alpha = 0.0;
     
     VideoScrollerTweet.alpha = 1.0;
