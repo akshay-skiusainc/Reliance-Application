@@ -360,7 +360,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    //
     [self getsharetext];
        
     _okaybutton.enabled=NO;
