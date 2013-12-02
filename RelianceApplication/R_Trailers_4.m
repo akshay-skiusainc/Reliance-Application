@@ -742,7 +742,9 @@
         data11[i]= [actoAgent objectForKey:@"status"];
 		NSLog(@"status=%@",data11[i]);
         
-        
+        data110[i]= [actoAgent objectForKey:@"premium"];
+		NSLog(@"premium=%@",data110[i]);
+
         
 		i++;
         
@@ -2376,7 +2378,7 @@
         //        loginViewController.singer = data6[gesture.view.tag];
         //        loginViewController.lyrics = data7[gesture.view.tag];
         //        loginViewController.musicDirector = data3[gesture.view.tag];
-        //       loginViewController.premiumType = data10[gesture.view.tag];
+        loginViewController.premiumType = data110[gesture.view.tag];
         //       loginViewController.musicLabel = data9[gesture.view.tag];
         [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Video Clicked"
                                                         withAction:data1[gesture.view.tag]

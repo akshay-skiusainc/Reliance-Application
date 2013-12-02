@@ -831,7 +831,7 @@
     loginViewController.entity_name=data40[gesture.view.tag];
     loginViewController.entity_Key=fbFeedId[gesture.view.tag];
 
-   // loginViewController.premiumType = data100[gesture.view.tag];
+   loginViewController.premiumType = data100[gesture.view.tag];
     loginViewController.musicLabel = [NSString stringWithFormat:@"%@",data40[gesture.view.tag]];
     [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Video Clicked"
                                                     withAction:data1[gesture.view.tag]

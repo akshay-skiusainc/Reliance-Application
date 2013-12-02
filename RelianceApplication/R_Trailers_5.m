@@ -758,7 +758,8 @@
         data11[i]= [actoAgent objectForKey:@"status"];
 		NSLog(@"status=%@",data11[i]);
         
-        
+        data110[i]= [actoAgent objectForKey:@"premium"];
+		NSLog(@"premium=%@",data110[i]);
         
 		i++;
         
@@ -834,100 +835,27 @@
     
 	for (int i =loaderCount; i<loaderCount+finalCount; i++)
     {
-        if([data9[i] isEqualToString:movieSearch.text])
-        {
-            bgView[i] = [[UIView alloc]initWithFrame:CGRectMake(0, m, 320, 267)];
-            bgView[i].backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg-2.jpg"]];
-            [VideoScroller addSubview:bgView[i]];
-            
-            socializeBg[i] = [[UIView alloc]initWithFrame:CGRectMake(2, 0,315,44)];
-            socializeBg[i].backgroundColor = [UIColor clearColor];
-            [bgView[i] addSubview:socializeBg[i]];
-            
-            webwall[i] = [[UIWebView alloc] initWithFrame:CGRectMake(5, 44, 315,176)];
-            webwall[i].userInteractionEnabled=YES;
-            webwall[i].delegate =self;
-            webwall[i].tag=i;
-            NSURL *url = [NSURL URLWithString:data2[i]];
-            NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-            [webwall[i] loadRequest:requestObj];
-            webwall[i].scrollView.bounces = NO;
-            webwall[i].scrollView.scrollEnabled = NO;
-            webwall[i].backgroundColor= [UIColor clearColor];
-            webwall[i].opaque = NO;
-            webwall[i].scalesPageToFit = YES;
-            [bgView[i] addSubview:webwall[i]];
-            
-            
-            ImagePatch[i] = [[UIImageView alloc] initWithFrame:CGRectMake(2,220, 315,45)];
-            ImagePatch[i].userInteractionEnabled=YES;
-            ImagePatch[i].backgroundColor=[UIColor clearColor];
-            ImagePatch[i].alpha=0.7;
-            [bgView[i] addSubview:ImagePatch[i]];
-            ImagePatch[i].tag= i;
-            
-            UIImageView *playIcon = [[UIImageView alloc]initWithFrame:CGRectMake(117, 54, 70, 70)];
-            playIcon.image = [UIImage imageNamed:@"video-play-btnRel.png"];
-            [webwall[i] addSubview:playIcon];
-
-            
-            
-            MusicLabel[i] = [[UILabel alloc] initWithFrame:CGRectMake(5, 12, 300, 30)];
-            MusicLabel[i].backgroundColor =[UIColor clearColor];
-            MusicLabel[i].textColor= [self colorWithHexString:@"e42477"];
-            MusicLabel[i].text=data8[i];
-            MusicLabel[i].font = [UIFont boldSystemFontOfSize:21.0f];
-            [socializeBg[i] addSubview:MusicLabel[i]];
-            
-            
-            MovieTextViewvideo[i] = [[UITextView alloc] initWithFrame:CGRectMake(2,220, 300, 43)];
-            MovieTextViewvideo[i].backgroundColor =[UIColor clearColor];
-            MovieTextViewvideo[i].textColor= [UIColor darkGrayColor];
-            MovieTextViewvideo[i].editable = NO;
-            MovieTextViewvideo[i].text=data7[i];
-            MovieTextViewvideo[i].font = [UIFont boldSystemFontOfSize:18.0f];
-            [bgView[i] addSubview:MovieTextViewvideo[i]];
-            
-            
-            
-            UITapGestureRecognizer *tapped123 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navigate:)];
-            tapped123.numberOfTapsRequired = 1;
-            
-            tapped123.delegate=self;
-            [webwall[i] addGestureRecognizer:tapped123];
-            
-            
-            
-            
-            if ([data11[i] isEqualToString:@"1"])
-            {
-                if (!lockImage[i]) {
-
-                lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
-                lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
-                [webwall[i] addSubview:lockImage[i]];
-                }
-            }
-            
-            else
-            {
-                lockImage[i].image=[UIImage imageNamed:@""];
-            }
-            m+=275;
-            
-        }
-        
-        
-        
         if([movieSearch.text isEqualToString:@"All"])
         {
             bgView[i] = [[UIView alloc]initWithFrame:CGRectMake(0, m, 320, 267)];
             bgView[i].backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg-2.jpg"]];
             [VideoScroller addSubview:bgView[i]];
             
-            socializeBg[i] = [[UIView alloc]initWithFrame:CGRectMake(2, 0,315,44)];
-            socializeBg[i].backgroundColor = [UIColor clearColor];
-            [bgView[i] addSubview:socializeBg[i]];
+            MusicLabel[i] = [[UILabel alloc] initWithFrame:CGRectMake(5, 12, 300, 30)];
+            MusicLabel[i].backgroundColor =[UIColor clearColor];
+            MusicLabel[i].textColor= [self colorWithHexString:@"e42477"];
+            MusicLabel[i].text=data8[i];
+            MusicLabel[i].font = [UIFont boldSystemFontOfSize:21.0f];
+            [socializeBg[i] addSubview:MusicLabel[i]];
+            
+            MovieTextViewvideo[i] = [[UITextView alloc] initWithFrame:CGRectMake(5,220, 300, 43)];
+            MovieTextViewvideo[i].backgroundColor =[UIColor clearColor];
+            MovieTextViewvideo[i].textColor= [UIColor darkGrayColor];
+            MovieTextViewvideo[i].text=data7[i];
+            MovieTextViewvideo[i].font = [UIFont boldSystemFontOfSize:18.0f];
+            [bgView[i] addSubview:MovieTextViewvideo[i]];
+            
+            
             
             webwall[i] = [[UIWebView alloc] initWithFrame:CGRectMake(5, 44, 315,176)];
             webwall[i].userInteractionEnabled=YES;
@@ -954,25 +882,6 @@
             UIImageView *playIcon = [[UIImageView alloc]initWithFrame:CGRectMake(117, 54, 70, 70)];
             playIcon.image = [UIImage imageNamed:@"video-play-btnRel.png"];
             [webwall[i] addSubview:playIcon];
-
-            
-            
-            MusicLabel[i] = [[UILabel alloc] initWithFrame:CGRectMake(5, 12, 300, 30)];
-            MusicLabel[i].backgroundColor =[UIColor clearColor];
-            MusicLabel[i].textColor= [self colorWithHexString:@"e42477"];
-            MusicLabel[i].text=data8[i];
-            MusicLabel[i].font = [UIFont boldSystemFontOfSize:21.0f];
-            [socializeBg[i] addSubview:MusicLabel[i]];
-            
-            MovieTextViewvideo[i] = [[UITextView alloc] initWithFrame:CGRectMake(2,220, 300, 43)];
-            MovieTextViewvideo[i].backgroundColor =[UIColor clearColor];
-            MovieTextViewvideo[i].editable = NO;
-            MovieTextViewvideo[i].textColor= [UIColor darkGrayColor];
-            MovieTextViewvideo[i].text=data7[i];
-            MovieTextViewvideo[i].font = [UIFont boldSystemFontOfSize:18.0f];
-            [bgView[i] addSubview:MovieTextViewvideo[i]];
-            
-            
             
             UITapGestureRecognizer *tapped123 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navigate:)];
             tapped123.numberOfTapsRequired = 1;
@@ -983,25 +892,32 @@
             
             
             
+            
             if ([data11[i] isEqualToString:@"1"])
             {
                 if (!lockImage[i]) {
-
-                lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
-                lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
-                [webwall[i] addSubview:lockImage[i]];
+                    
+                    lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
+                    lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
+                    [webwall[i] addSubview:lockImage[i]];
                 }
             }
             else
             {
                 lockImage[i].image=[UIImage imageNamed:@""];
             }
-
             m+=275;
             
         }
         
 	}
+    
+    if(m==0)
+    {
+        UIAlertView *noMovieAlert = [[UIAlertView alloc]initWithTitle:nil message:@"Oops! No movies matching your search" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+        noMovieAlert.tag = 5;
+        [noMovieAlert show];
+    }
     
     
 	VideoScroller.contentSize = CGSizeMake(299,m);
@@ -1013,16 +929,8 @@
     
     activityIndicator.hidden = YES;
     
-    if(m==0 )
-    {
-        UIAlertView *noMovieAlert = [[UIAlertView alloc]initWithTitle:nil message:@"Oops! No movies matching your search" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-        noMovieAlert.tag = 5;
-        [noMovieAlert show];
-    }
-
-        
+    
 }
-
 
 -(void)DisplayVideos
 {
@@ -1033,13 +941,14 @@
     
    	[self getdata];
     [self getsharetext];
-       
+    
 	VideoScroller = [[UIScrollView alloc] initWithFrame:CGRectMake(5,110,320,396)];
 	VideoScroller.userInteractionEnabled	=YES;
     VideoScroller.backgroundColor = [UIColor clearColor];
 	VideoScroller.showsVerticalScrollIndicator = YES;
     VideoScroller.delegate = self;
 	VideoScroller.pagingEnabled = NO;
+    VideoScroller.tag=2;
 	[self.view addSubview:VideoScroller];
 	
     finalCount=5;
@@ -1054,9 +963,21 @@
             bgView[i].backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg-2.jpg"]];
             [VideoScroller addSubview:bgView[i]];
             
-            socializeBg[i] = [[UIView alloc]initWithFrame:CGRectMake(2, 0,315,44)];
-            socializeBg[i].backgroundColor = [UIColor clearColor];
-            [bgView[i] addSubview:socializeBg[i]];
+            MusicLabel[i] = [[UILabel alloc] initWithFrame:CGRectMake(5, 12, 300, 30)];
+            MusicLabel[i].backgroundColor =[UIColor clearColor];
+            MusicLabel[i].textColor= [self colorWithHexString:@"e42477"];
+            MusicLabel[i].text=data8[i];
+            MusicLabel[i].font = [UIFont boldSystemFontOfSize:21.0f];
+            [socializeBg[i] addSubview:MusicLabel[i]];
+            
+            MovieTextViewvideo[i] = [[UITextView alloc] initWithFrame:CGRectMake(5,220, 300, 43)];
+            MovieTextViewvideo[i].backgroundColor =[UIColor clearColor];
+            MovieTextViewvideo[i].textColor= [UIColor darkGrayColor];
+            MovieTextViewvideo[i].text=data7[i];
+            MovieTextViewvideo[i].font = [UIFont boldSystemFontOfSize:18.0f];
+            [bgView[i] addSubview:MovieTextViewvideo[i]];
+            
+            
             
             webwall[i] = [[UIWebView alloc] initWithFrame:CGRectMake(5, 44, 315,176)];
             webwall[i].userInteractionEnabled=YES;
@@ -1083,25 +1004,6 @@
             UIImageView *playIcon = [[UIImageView alloc]initWithFrame:CGRectMake(117, 54, 70, 70)];
             playIcon.image = [UIImage imageNamed:@"video-play-btnRel.png"];
             [webwall[i] addSubview:playIcon];
-
-            
-            
-            MusicLabel[i] = [[UILabel alloc] initWithFrame:CGRectMake(5, 12, 300, 30)];
-            MusicLabel[i].backgroundColor =[UIColor clearColor];
-            MusicLabel[i].textColor= [self colorWithHexString:@"e42477"];
-            MusicLabel[i].text=data8[i];
-            MusicLabel[i].font = [UIFont boldSystemFontOfSize:21.0f];
-            [socializeBg[i] addSubview:MusicLabel[i]];
-            
-            MovieTextViewvideo[i] = [[UITextView alloc] initWithFrame:CGRectMake(2,220, 300, 43)];
-            MovieTextViewvideo[i].backgroundColor =[UIColor clearColor];
-            MovieTextViewvideo[i].editable = NO;
-            MovieTextViewvideo[i].textColor= [UIColor darkGrayColor];
-            MovieTextViewvideo[i].text=data7[i];
-            MovieTextViewvideo[i].font = [UIFont boldSystemFontOfSize:18.0f];
-            [bgView[i] addSubview:MovieTextViewvideo[i]];
-            
-            
             
             UITapGestureRecognizer *tapped123 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navigate:)];
             tapped123.numberOfTapsRequired = 1;
@@ -1112,116 +1014,120 @@
             
             
             
+            
             if ([data11[i] isEqualToString:@"1"])
             {
                 if (!lockImage[i]) {
-
-                lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
-                lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
-                [webwall[i] addSubview:lockImage[i]];
+                    
+                    lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
+                    lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
+                    [webwall[i] addSubview:lockImage[i]];
                 }
             }
             else
             {
                 lockImage[i].image=[UIImage imageNamed:@""];
             }
-
             m+=275;
-            Scroller.contentSize = CGSizeMake(320, ((5*226)/2)+226);
+            
         }
+        VideoScroller.contentSize = CGSizeMake(299,5*275);
         loaderCount=loaderCount+5;
-
+        
     }
     
-    else{
+    
+    else
+    {
+        
         for (int i =0; i<TotalData1; i++) {
-		if([data9[i] isEqualToString:movieSearch.text])
-        {
-            bgView[i] = [[UIView alloc]initWithFrame:CGRectMake(0, m, 320, 267)];
-            bgView[i].backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg-2.jpg"]];
-            [VideoScroller addSubview:bgView[i]];
-            
-            socializeBg[i] = [[UIView alloc]initWithFrame:CGRectMake(2, 0,315,44)];
-            socializeBg[i].backgroundColor = [UIColor clearColor];
-            [bgView[i] addSubview:socializeBg[i]];
-
-            webwall[i] = [[UIWebView alloc] initWithFrame:CGRectMake(5, 44, 315,176)];
-            webwall[i].userInteractionEnabled=YES;
-            webwall[i].delegate =self;
-            webwall[i].tag=i;
-            NSURL *url = [NSURL URLWithString:data2[i]];
-            NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-            [webwall[i] loadRequest:requestObj];
-            webwall[i].scrollView.bounces = NO;
-            webwall[i].scrollView.scrollEnabled = NO;
-            webwall[i].backgroundColor= [UIColor clearColor];
-            webwall[i].opaque = NO;
-            webwall[i].scalesPageToFit = YES;
-            [bgView[i] addSubview:webwall[i]];
-            
-            
-            ImagePatch[i] = [[UIImageView alloc] initWithFrame:CGRectMake(2,220, 315,45)];
-            ImagePatch[i].userInteractionEnabled=YES;
-            ImagePatch[i].backgroundColor=[UIColor clearColor];
-            ImagePatch[i].alpha=0.7;
-            [bgView[i] addSubview:ImagePatch[i]];
-            ImagePatch[i].tag= i;
-            
-            UIImageView *playIcon = [[UIImageView alloc]initWithFrame:CGRectMake(117, 54, 70, 70)];
-            playIcon.image = [UIImage imageNamed:@"video-play-btnRel.png"];
-            [webwall[i] addSubview:playIcon];
-
-            
-            MusicLabel[i] = [[UILabel alloc] initWithFrame:CGRectMake(5, 12, 300, 30)];
-            MusicLabel[i].backgroundColor =[UIColor clearColor];
-            MusicLabel[i].textColor= [self colorWithHexString:@"e42477"];
-            MusicLabel[i].text=data8[i];
-            MusicLabel[i].font = [UIFont boldSystemFontOfSize:21.0f];
-            [socializeBg[i] addSubview:MusicLabel[i]];
-             
-            
-            MovieTextViewvideo[i] = [[UITextView alloc] initWithFrame:CGRectMake(2,220, 300, 43)];
-            MovieTextViewvideo[i].backgroundColor =[UIColor clearColor];
-            MovieTextViewvideo[i].textColor= [UIColor darkGrayColor];
-            MovieTextViewvideo[i].editable = NO;
-            MovieTextViewvideo[i].text=data7[i];
-            MovieTextViewvideo[i].font = [UIFont boldSystemFontOfSize:18.0f];
-            [bgView[i] addSubview:MovieTextViewvideo[i]];
-            
-            
-            
-            UITapGestureRecognizer *tapped123 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navigate:)];
-            tapped123.numberOfTapsRequired = 1;
-            
-            tapped123.delegate=self;
-            [webwall[i] addGestureRecognizer:tapped123];
-            
-            
-            
-            
-            if ([data11[i] isEqualToString:@"1"])
+            if([data9[i] isEqualToString:movieSearch.text])
             {
-                if (!lockImage[i]) {
-
-                lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
-                lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
-                [webwall[i] addSubview:lockImage[i]];
+                bgView[i] = [[UIView alloc]initWithFrame:CGRectMake(0, m, 320, 267)];
+                bgView[i].backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg-2.jpg"]];
+                [VideoScroller addSubview:bgView[i]];
+                
+                MusicLabel[i] = [[UILabel alloc] initWithFrame:CGRectMake(5, 12, 300, 30)];
+                MusicLabel[i].backgroundColor =[UIColor clearColor];
+                MusicLabel[i].textColor= [self colorWithHexString:@"e42477"];
+                MusicLabel[i].text=data8[i];
+                MusicLabel[i].font = [UIFont boldSystemFontOfSize:21.0f];
+                [socializeBg[i] addSubview:MusicLabel[i]];
+                
+                MovieTextViewvideo[i] = [[UITextView alloc] initWithFrame:CGRectMake(5,220, 300, 43)];
+                MovieTextViewvideo[i].backgroundColor =[UIColor clearColor];
+                MovieTextViewvideo[i].textColor= [UIColor darkGrayColor];
+                MovieTextViewvideo[i].text=data7[i];
+                MovieTextViewvideo[i].font = [UIFont boldSystemFontOfSize:18.0f];
+                [bgView[i] addSubview:MovieTextViewvideo[i]];
+                webwall[i] = [[UIWebView alloc] initWithFrame:CGRectMake(5, 44, 315,176)];
+                webwall[i].userInteractionEnabled=YES;
+                webwall[i].delegate =self;
+                webwall[i].tag=i;
+                NSURL *url = [NSURL URLWithString:data2[i]];
+                NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+                [webwall[i] loadRequest:requestObj];
+                webwall[i].scrollView.bounces = NO;
+                webwall[i].scrollView.scrollEnabled = NO;
+                webwall[i].backgroundColor= [UIColor clearColor];
+                webwall[i].opaque = NO;
+                webwall[i].scalesPageToFit = YES;
+                [bgView[i] addSubview:webwall[i]];
+                
+                
+                ImagePatch[i] = [[UIImageView alloc] initWithFrame:CGRectMake(2,220, 315,45)];
+                ImagePatch[i].userInteractionEnabled=YES;
+                ImagePatch[i].backgroundColor=[UIColor clearColor];
+                ImagePatch[i].alpha=0.7;
+                [bgView[i] addSubview:ImagePatch[i]];
+                ImagePatch[i].tag= i;
+                
+                UIImageView *playIcon = [[UIImageView alloc]initWithFrame:CGRectMake(117, 54, 70, 70)];
+                playIcon.image = [UIImage imageNamed:@"video-play-btnRel.png"];
+                [webwall[i] addSubview:playIcon];
+                
+                UITapGestureRecognizer *tapped123 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(navigate:)];
+                tapped123.numberOfTapsRequired = 1;
+                
+                tapped123.delegate=self;
+                [webwall[i] addGestureRecognizer:tapped123];
+                
+                
+                
+                
+                
+                if ([data11[i] isEqualToString:@"1"])
+                {
+                    if (!lockImage[i]) {
+                        
+                        lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
+                        lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
+                        [webwall[i] addSubview:lockImage[i]];
+                    }
                 }
+                else
+                {
+                    lockImage[i].image=[UIImage imageNamed:@""];
+                }
+                m+=275;
+                
             }
-            else
-            {
-                lockImage[i].image=[UIImage imageNamed:@""];
-            }
-
-            m+=275;
             
         }
-        
-	}
-        
+        VideoScroller.contentSize = CGSizeMake(299,m);
+        loaderCount=TotalData1;
     }
-    VideoScroller.contentSize = CGSizeMake(299,m);
-    loaderCount=TotalData1;
+    
+    
+    
+    if(m==0)
+    {
+        UIAlertView *noMovieAlert = [[UIAlertView alloc]initWithTitle:nil message:@"Oops! No movies matching your search" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+        noMovieAlert.tag = 5;
+        [noMovieAlert show];
+    }
+    
+    
 	
     [movieTable reloadData];
     
@@ -1231,14 +1137,8 @@
     
     activityIndicator.hidden = YES;
     
-    if(m==0 )
-    {
-        UIAlertView *noMovieAlert = [[UIAlertView alloc]initWithTitle:nil message:@"Oops! No movies matching your search" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
-        noMovieAlert.tag = 5;
-        [noMovieAlert show];
-    }
-    
 }
+
 -(void)ScrollLazyLoading
 {
     
@@ -2488,7 +2388,7 @@
         //        loginViewController.singer = data6[gesture.view.tag];
         //        loginViewController.lyrics = data7[gesture.view.tag];
         //        loginViewController.musicDirector = data3[gesture.view.tag];
-        //       loginViewController.premiumType = data10[gesture.view.tag];
+        loginViewController.premiumType = data110[gesture.view.tag];
         //       loginViewController.musicLabel = data9[gesture.view.tag];
         [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Video Clicked"
                                                         withAction:data1[gesture.view.tag]

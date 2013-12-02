@@ -952,7 +952,7 @@
 //        loginViewController.singer = data6[gesture.view.tag];
 //        loginViewController.lyrics = data7[gesture.view.tag];
 //        loginViewController.musicDirector = data3[gesture.view.tag];
-//        loginViewController.premiumType = data10[gesture.view.tag];
+        loginViewController.premiumType = data10[gesture.view.tag];
 //        loginViewController.musicLabel = data9[gesture.view.tag];
         [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Video Clicked"
                                                         withAction:data1[gesture.view.tag]

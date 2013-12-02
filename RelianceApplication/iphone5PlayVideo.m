@@ -76,6 +76,7 @@
     if([premiumType isEqualToString:@"1"])
     {
         shareButtonView.alpha = 0.0;
+          _socializebg.alpha = 0.0;
     }
 	
     shareView.alpha = 0.0;

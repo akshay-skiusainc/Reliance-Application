@@ -67,7 +67,8 @@
     NSArray *_products;
     NSNumberFormatter * _priceFormatter;
     NSTimer *_timer;
-    
+    NSString *data110[1000];
+
     // int TotalData;
     SZActionBar *actionBar[1000];
     NSString *FBID;

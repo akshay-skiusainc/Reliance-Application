@@ -561,7 +561,7 @@
 		NSLog(@"status=%@",data110[k]);
         
 		data100[k]= [actoAgent objectForKey:@"premium"];
-		NSLog(@"premium=%@",data10[k]);
+		NSLog(@"premium=%@",data100[k]);
 		
 		
 		k++;
@@ -825,7 +825,7 @@
     loginViewController.time = data50[gesture.view.tag];
     loginViewController.entity_name=data40[gesture.view.tag];
     loginViewController.entity_Key=fbFeedId[gesture.view.tag];
-  //  loginViewController.premiumType = data100[gesture.view.tag];
+  loginViewController.premiumType = data100[gesture.view.tag];
     loginViewController.musicLabel = data40[gesture.view.tag];
     [[GAI sharedInstance].defaultTracker sendEventWithCategory:@"Video Clicked"
                                                     withAction:data1[gesture.view.tag]

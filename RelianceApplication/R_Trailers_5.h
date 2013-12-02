@@ -92,7 +92,8 @@
     NSString *data16[1000];
     NSString *data17[1000];
      NSString *data18[1000];
-    
+    NSString *data110[1000];
+
     UIImageView  *view3[1000];
     UIView *socializeBgStills[1000];
     SZActionBar *actionBarStills[1000];
