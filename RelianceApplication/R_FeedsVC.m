@@ -663,7 +663,7 @@ CGSize maximumLabelSize;
             
             currentScrollPosition= VideoScroller.contentOffset.y;
             if ( (currentScrollPosition = VideoScroller.contentSize.height)) {
-                VideoScroller.contentSize = CGSizeMake(304, (325*loaderCount)+1100);
+                VideoScroller.contentSize = CGSizeMake(304, (325*loaderCount)+1700);
                 
                 [self ScrollLazyLoading1];
                 loaderCount=loaderCount+finalCount;

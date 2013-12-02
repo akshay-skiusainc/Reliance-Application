@@ -214,6 +214,7 @@
                 NSDictionary *award_movie = [json objectForKey:@"award_movie"];
                 NSDictionary *movie_Category = [json objectForKey:@"movie_cat"];
                 NSDictionary *award_info = [json objectForKey:@"award_info"];
+                NSDictionary *RightNavMovieLogo = [json objectForKey:@"movie_icon"];
                 ///////
                 GlobalClass *obj=[GlobalClass getInstance];
                 for (NSDictionary *actoAgent in bookmyshow)
@@ -245,7 +246,7 @@
                 obj.rel_groups = [json objectForKey:@"groups"];
                 obj.rel_fbtoken=fbtoken;
                 obj.rel_Notifications=notifications;
-                //  obj.Contests=Contests;
+                obj.rel_RightNavMovieLogo = RightNavMovieLogo;                //  obj.Contests=Contests;
                 //
                 for (NSDictionary *actoAgent in dirnote)
                 {
