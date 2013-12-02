@@ -81,38 +81,59 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    
+    [self getdata];
+
     GlobalClass *obj=[GlobalClass getInstance];
     
-//    if([obj.Leftcheck isEqualToString:@"1"])
-//    {
-////        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg.jpg"]];
-//        [self.view setBackgroundColor: [self colorWithHexString:@"0c4ca3"]];
-//
-//        _SONG_BTN.alpha=0.0;
-//        
-//    }
-//    else
-//    {
-//        
-//        NSData* imageData = [[NSUserDefaults standardUserDefaults] objectForKey:@"app_bg_image"];
-//        UIImage* app_bg_image = [UIImage imageWithData:imageData];
-//        self.view.backgroundColor = [UIColor colorWithPatternImage:app_bg_image];
-//        _SONG_BTN.alpha=1.0;
-//
-//    }
 
     
     if([obj.Leftcheck isEqualToString:@"1"])
     {
-        //        [self.view setBackgroundColor: [self colorWithHexString:@"0c4ca3"]];
-        //        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"right_nav_bg.jpg"]];
+        
         _Scroller.contentSize = CGSizeMake(215, 400);
         self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"home_bg_548.jpg"]];
 
         _Scroller.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"right_nav_bg.jpg"]];
         _SONG_BTN.alpha=0.0;
-        [_logo setImage:[UIImage imageNamed:@"right_nav-1.jpg"] forState:UIControlStateNormal];
+        if (_logo == nil)
+            
+        {
+            
+            _logo = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 215, 98)];
+            
+            
+            
+            _logo.contentMode = UIViewContentModeScaleToFill;
+            
+        }
+        
+        //   _logo.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"color_pacth_400x400.png"]];
+        _logo.userInteractionEnabled = YES;
+        
+        
+        
+        //cancel any previously loading images for this view
+        
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:_logo];
+        
+        
+        
+        //set image URL. AsyncImageView class will then dynamically load the image
+        
+        NSURL *url1 = [NSURL URLWithString:data1];
+        
+        
+        
+        ((AsyncImageView *)_logo).imageURL =url1;
+        
+        [_VIEW1 addSubview:_logo];
+        
+        
+        UITapGestureRecognizer *webViewTapped = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toRelApp:)];
+        
+        webViewTapped.numberOfTapsRequired = 1;
+        webViewTapped.delegate = self;
+        [_logo addGestureRecognizer:webViewTapped];
         [_merchandise_btn setImage:[UIImage imageNamed:@"right_nav-2.jpg"] forState:UIControlStateNormal];
         [_chat_btn setImage:[UIImage imageNamed:@"right_nav-3.jpg"] forState:UIControlStateNormal];
         [_profile_btn setImage:[UIImage imageNamed:@"right_nav-4.jpg"] forState:UIControlStateNormal];
@@ -132,7 +153,45 @@
         self.view.backgroundColor = [UIColor colorWithPatternImage:app_bg_image];
         _SONG_BTN.alpha=1.0;
         
-        [_logo setImage:[UIImage imageNamed:@"right_nav_reliance_btn.png"] forState:UIControlStateNormal];
+        if (_logo == nil)
+            
+        {
+            
+            _logo = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 215, 98)];
+            
+            
+            
+            _logo.contentMode = UIViewContentModeScaleToFill;
+            
+        }
+        
+        //  _logo.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"color_pacth_400x400.png"]];
+        _logo.userInteractionEnabled = YES;
+        
+        
+        
+        //cancel any previously loading images for this view
+        
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:_logo];
+        
+        
+        
+        //set image URL. AsyncImageView class will then dynamically load the image
+        
+        //  NSURL *url1 = [NSURL URLWithString:data1];
+        
+        
+        
+        ((AsyncImageView *)_logo).image = [UIImage imageNamed:@"right_nav_reliance_btn.png"];
+        
+        [_VIEW1 addSubview:_logo];
+        
+        
+        UITapGestureRecognizer *webViewTapped = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toRelApp:)];
+        
+        webViewTapped.numberOfTapsRequired = 1;
+        webViewTapped.delegate = self;
+        [_logo addGestureRecognizer:webViewTapped];
         [_merchandise_btn setImage:[UIImage imageNamed:@"right_nav_merchandise_btn.png"] forState:UIControlStateNormal];
         [_chat_btn setImage:[UIImage imageNamed:@"right_nav_chat_btn.png"] forState:UIControlStateNormal];
         [_profile_btn setImage:[UIImage imageNamed:@"right_nav_myprofile_btn.png"] forState:UIControlStateNormal];
@@ -263,8 +322,23 @@
     
 }
 
--(IBAction)toRelApp:(UIButton *)sender
+-(void)getdata
 {
+    GlobalClass *obj=[GlobalClass getInstance];
+	NSLog(@"ddata=%@",obj.rel_RightNavMovieLogo);
+    
+	for (NSDictionary *actoAgent in obj.rel_RightNavMovieLogo)
+	{
+		data1= [actoAgent objectForKey:@"m_img_ios"];
+		NSLog(@"m_img_ios=%@",data1);
+        
+    }
+}
+
+
+-(void)toRelApp:(UITapGestureRecognizer *)sender
+{
+    
     GlobalClass *obj=[GlobalClass getInstance];
     obj.fetchall = @"0";
     if([obj.Leftcheck isEqualToString:@"1"])

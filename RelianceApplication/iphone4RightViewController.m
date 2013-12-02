@@ -105,6 +105,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    [self getdata];
     
     GlobalClass *obj=[GlobalClass getInstance];
     NSLog(@"lal===1");
@@ -120,7 +121,50 @@
 
         _Scroller.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"right_nav_bg.jpg"]];
         _SONG_BTN.alpha=0.0;
-        [_logo setImage:[UIImage imageNamed:@"right_nav-1.jpg"] forState:UIControlStateNormal];
+        
+        
+        if (_logo == nil)
+            
+        {
+            
+            _logo = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 215, 98)];
+            
+            
+            
+            _logo.contentMode = UIViewContentModeScaleToFill;
+            
+        }
+        
+     //   _logo.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"color_pacth_400x400.png"]];
+        _logo.userInteractionEnabled = YES;
+        
+        
+        
+        //cancel any previously loading images for this view
+        
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:_logo];
+        
+        
+        
+        //set image URL. AsyncImageView class will then dynamically load the image
+        
+        NSURL *url1 = [NSURL URLWithString:data1];
+        
+        
+        
+        ((AsyncImageView *)_logo).imageURL =url1;
+        
+        [_VIEW1 addSubview:_logo];
+        
+        
+        UITapGestureRecognizer *webViewTapped = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toRelApp:)];
+        
+        webViewTapped.numberOfTapsRequired = 1;
+        webViewTapped.delegate = self;
+        [_logo addGestureRecognizer:webViewTapped];
+
+
+        
         [_merchandise_btn setImage:[UIImage imageNamed:@"right_nav-2.jpg"] forState:UIControlStateNormal];
         [_chat_btn setImage:[UIImage imageNamed:@"right_nav-3.jpg"] forState:UIControlStateNormal];
         [_profile_btn setImage:[UIImage imageNamed:@"right_nav-4.jpg"] forState:UIControlStateNormal];
@@ -139,13 +183,120 @@
         UIImage* app_bg_image = [UIImage imageWithData:imageData];
         self.view.backgroundColor = [UIColor colorWithPatternImage:app_bg_image];
         _SONG_BTN.alpha=1.0;
+        if (_logo == nil)
+            
+        {
+            
+            _logo = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, 215, 98)];
+            
+            
+            
+            _logo.contentMode = UIViewContentModeScaleToFill;
+            
+        }
         
-        [_logo setImage:[UIImage imageNamed:@"right_nav_reliance_btn.png"] forState:UIControlStateNormal];
+      //  _logo.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"color_pacth_400x400.png"]];
+        _logo.userInteractionEnabled = YES;
+        
+        
+        
+        //cancel any previously loading images for this view
+        
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:_logo];
+        
+        
+        
+        //set image URL. AsyncImageView class will then dynamically load the image
+        
+      //  NSURL *url1 = [NSURL URLWithString:data1];
+        
+        
+        
+        ((AsyncImageView *)_logo).image = [UIImage imageNamed:@"right_nav_reliance_btn.png"];
+        
+        [_VIEW1 addSubview:_logo];
+        
+        
+        UITapGestureRecognizer *webViewTapped = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(toRelApp:)];
+        
+        webViewTapped.numberOfTapsRequired = 1;
+        webViewTapped.delegate = self;
+        [_logo addGestureRecognizer:webViewTapped];
+        
         [_merchandise_btn setImage:[UIImage imageNamed:@"right_nav_merchandise_btn.png"] forState:UIControlStateNormal];
         [_chat_btn setImage:[UIImage imageNamed:@"right_nav_chat_btn.png"] forState:UIControlStateNormal];
         [_profile_btn setImage:[UIImage imageNamed:@"right_nav_myprofile_btn.png"] forState:UIControlStateNormal];
         
     }
+}
+-(void)getdata
+{
+    GlobalClass *obj=[GlobalClass getInstance];
+	NSLog(@"ddata=%@",obj.rel_RightNavMovieLogo);
+    
+	for (NSDictionary *actoAgent in obj.rel_RightNavMovieLogo)
+	{
+		data1= [actoAgent objectForKey:@"m_img_ios"];
+		NSLog(@"m_img_ios=%@",data1);
+        
+    }
+}
+
+
+-(void)toRelApp:(UITapGestureRecognizer *)sender
+{
+    NSLog(@"inRelApp");
+
+    GlobalClass *obj=[GlobalClass getInstance];
+    obj.fetchall = @"0";
+    if([obj.Leftcheck isEqualToString:@"1"])
+    {
+        obj.Leftcheck = @"0";
+        UIImage *image = [UIImage imageNamed:@"home_header_bg.jpg"];
+        [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+        
+        obj.coming = @"1";
+        
+        [obj.Mid_added removeAllObjects];
+        [obj.QtyOfProducts removeAllObjects];
+        obj.Mid_added =nil;
+        obj.QtyOfProducts =nil;
+        
+        
+        DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+        iphone4HomeViewController *controller = [[iphone4HomeViewController alloc] init];
+        //controller.title = selectedCountry;
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+        
+        [menuController setRootController:navController animated:YES];
+        
+        
+    }
+    else
+    {
+        obj.Leftcheck=@"1";
+        UIImage *image = [UIImage imageNamed:@"home_header_bg1.jpg"];
+        [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+        
+        obj.coming = @"1";
+        
+        [obj.Mid_added removeAllObjects];
+        [obj.QtyOfProducts removeAllObjects];
+        obj.Mid_added =nil;
+        obj.QtyOfProducts =nil;
+        
+        
+        DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
+        R_Home *controller = [[R_Home alloc] init];
+        //controller.title = selectedCountry;
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+        
+        [menuController setRootController:navController animated:YES];
+        
+    }
+    //    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Under construction" message:@"Check Back Soon" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    //    [alert show];
+    
 }
 
 -(IBAction)merchandise:(id)sender
@@ -290,59 +441,6 @@
     
 }
 
--(IBAction)toRelApp:(UIButton *)sender
-{
-    GlobalClass *obj=[GlobalClass getInstance];
-  obj.fetchall = @"0";
-    if([obj.Leftcheck isEqualToString:@"1"])
-    {
-        obj.Leftcheck = @"0";
-        UIImage *image = [UIImage imageNamed:@"home_header_bg.jpg"];
-        [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-        
-        obj.coming = @"1";
-        
-        [obj.Mid_added removeAllObjects];
-        [obj.QtyOfProducts removeAllObjects];
-        obj.Mid_added =nil;
-        obj.QtyOfProducts =nil;
-        
-        
-        DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
-        iphone4HomeViewController *controller = [[iphone4HomeViewController alloc] init];
-        //controller.title = selectedCountry;
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-        
-        [menuController setRootController:navController animated:YES];
-
-        
-    }
-    else
-    {
-        obj.Leftcheck=@"1";
-        UIImage *image = [UIImage imageNamed:@"home_header_bg1.jpg"];
-        [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-        
-        obj.coming = @"1";
-        
-        [obj.Mid_added removeAllObjects];
-        [obj.QtyOfProducts removeAllObjects];
-        obj.Mid_added =nil;
-        obj.QtyOfProducts =nil;
-        
-        
-        DDMenuController *menuController = (DDMenuController*)((AppDelegate*)[[UIApplication sharedApplication] delegate]).menuController;
-        R_Home *controller = [[R_Home alloc] init];
-        //controller.title = selectedCountry;
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-        
-        [menuController setRootController:navController animated:YES];
-
-    }
-//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Under construction" message:@"Check Back Soon" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
-//    [alert show];
-    
-}
 
 - (void)didReceiveMemoryWarning
 {

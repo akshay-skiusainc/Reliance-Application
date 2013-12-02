@@ -30,13 +30,16 @@
 #import "iphone5Notification.h"
 #import "iphone5Settings.h"
 #import "R_iPhone5Settings.h"
-@interface RightViewController : UIViewController
 
+@interface RightViewController : UIViewController<UIGestureRecognizerDelegate>
+{
+    NSString *data1;
+}
+@property (strong, nonatomic) UIImageView *logo;
 @property (weak, nonatomic) IBOutlet UIButton *SONG_BTN;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *Scroller;
 @property (weak, nonatomic) IBOutlet UIView *VIEW1;
-@property (weak, nonatomic) IBOutlet UIButton *logo;
 @property (weak, nonatomic) IBOutlet UIButton *merchandise_btn;
 @property (weak, nonatomic) IBOutlet UIButton *chat_btn;
 @property (weak, nonatomic) IBOutlet UIButton *profile_btn;

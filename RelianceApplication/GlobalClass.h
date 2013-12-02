@@ -212,6 +212,8 @@
 @property(nonatomic,retain)NSDictionary *rel_contest_bg;
 @property(nonatomic,retain)NSDictionary *rel_contest_btn;
 @property(nonatomic,retain)NSDictionary *rel_FBSTATUS;
+@property(nonatomic,retain)NSDictionary *rel_RightNavMovieLogo;
+
 
 +(GlobalClass*)getInstance; 
 +(GlobalClass *)getCheck;    
