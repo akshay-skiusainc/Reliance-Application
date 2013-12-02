@@ -32,7 +32,7 @@
     UILabel	*views[1000];
 
     UIView *backgroundView[1000];
-    UIImageView *lockImage;
+    UIImageView *lockImage[1000];
     UIImageView *gapview[1000];
 
     NSString *data20[1000];

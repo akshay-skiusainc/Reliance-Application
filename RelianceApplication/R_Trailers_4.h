@@ -60,7 +60,7 @@
 	UIButton			*hungamaBanner;
 	
 	UILabel			*MusicLabel[1000];
-    UIImageView *lockImage;
+    UIImageView *lockImage[1000];
     UIImageView *premiumImage;
     CGFloat start;
     BOOL directionUp;
@@ -94,7 +94,7 @@
     UIImageView  *view3[1000];
     UIView *socializeBgStills[1000];
     SZActionBar *actionBarStills[1000];
-    UIImageView *lockImageStills;
+    UIImageView *lockImageStills[1000];
     UILabel			*MovieLabelStills[1000];
     int l;
     NSString        *strr;
@@ -108,6 +108,7 @@
     
     NSString    *mailsharetext;
     UIImageView *grayImage1[1000];
+    int checksection;
     
     UIActivityIndicatorView *activityIndicator2;
 

@@ -89,7 +89,6 @@
     NSLog(@"iphone4viewcontroller called ***************************");
 	
 	GlobalClass *obj=[GlobalClass getInstance];
-    if ([obj.REL_DATA isEqualToString:@"0"]) {
         
         NSString*   post = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/fetch_all_rel_ios.php?deviceno=%@",obj.dev];
         
@@ -313,7 +312,6 @@
             }
             
         }
-    }
     
 }
 
@@ -348,8 +346,8 @@
     [[VideoScroller subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [VideoScroller removeFromSuperview];
     VideoScroller=nil;
+    [movieNameArray removeAllObjects];
     [self getcastncrewdata];
-    
     
     
 }
@@ -538,10 +536,10 @@
 		
 		data60[k]= [actoAgent objectForKey:@"movie_name"];
 		NSLog(@"movie_name=%@",data6[k]);
-        if (![movieNameArray containsObject:data6[k]])
+        if (![movieNameArray containsObject:data60[k]])
         {
             
-            [movieNameArray addObject:data6[k]];
+            [movieNameArray addObject:data60[k]];
         }
         
         
@@ -752,9 +750,13 @@
             
             if ([data110[i] isEqualToString:@"1"])
             {
-                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 308,140)];
-                lockImage.image = [UIImage imageNamed:@"premi_video.png"];
-                [webwall[i] addSubview:lockImage];
+                lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 308,140)];
+                lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
+                [webwall[i] addSubview:lockImage[i]];
+            }
+            else
+            {
+                lockImage[i].image=[UIImage imageNamed:@""];
             }
             m+=179;
         }

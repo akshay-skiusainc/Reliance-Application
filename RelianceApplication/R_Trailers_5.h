@@ -61,14 +61,15 @@
 	UIButton			*hungamaBanner;
 	
 	UILabel			*MusicLabel[1000];
-    UIImageView *lockImage;
+    UIImageView *lockImage[1000];
     UIImageView *premiumImage;
     CGFloat start;
     BOOL directionUp;
     NSArray *_products;
     NSNumberFormatter * _priceFormatter;
     NSTimer *_timer;
-    
+    int checksection;
+
     // int TotalData;
     SZActionBar *actionBar[1000];
     NSString *FBID;
@@ -95,7 +96,7 @@
     UIImageView  *view3[1000];
     UIView *socializeBgStills[1000];
     SZActionBar *actionBarStills[1000];
-    UIImageView *lockImageStills;
+    UIImageView *lockImageStills[1000];
     UILabel			*MovieLabelStills[1000];
     int l;
     NSString        *strr;

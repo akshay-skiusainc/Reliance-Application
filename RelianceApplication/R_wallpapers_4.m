@@ -46,7 +46,7 @@
         if ([product.productIdentifier isEqualToString:productIdentifier]) {
             NSLog(@"PROCT PURCHAED");
             [self performSelector:@selector(restoreDone) withObject:nil afterDelay:0.0];
-            [self performSelector:@selector(timercalled) withObject:nil afterDelay:0.0];
+            [self performSelector:@selector(timercalled) withObject:nil afterDelay:1.0];
             
             //   [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
             *stop = YES;
@@ -124,7 +124,6 @@
     NSLog(@"iphone4viewcontroller called ***************************");
 	
 	GlobalClass *obj=[GlobalClass getInstance];
-    if ([obj.REL_DATA isEqualToString:@"0"]) {
         
         NSString*   post = [NSString stringWithFormat:@"http://apps.medialabs24x7.com/besharam/fetch_all_rel_ios.php?deviceno=%@",obj.dev];
         
@@ -348,7 +347,6 @@
             }
             
         }
-    }
     
 }
 
@@ -614,9 +612,13 @@
             
             if([data10[a] isEqualToString:@"1"])
             {
-                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                lockImage.image = [UIImage imageNamed:@"premi_wall_ip4.png"];
-                [view3[a] addSubview:lockImage];
+                lockImage[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                lockImage[a].image = [UIImage imageNamed:@"premi_wall_ip4.png"];
+                [view3[a] addSubview:lockImage[a]];
+            }
+            else
+            {
+                lockImage[a].image= [UIImage imageNamed:@""];
             }
             
             MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
@@ -700,9 +702,13 @@
             
             if([data10[a] isEqualToString:@"1"])
             {
-                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                lockImage.image = [UIImage imageNamed:@"premi_wall_ip4.png"];
-                [view3[a] addSubview:lockImage];
+                lockImage[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                lockImage[a].image = [UIImage imageNamed:@"premi_wall_ip4.png"];
+                [view3[a] addSubview:lockImage[a]];
+            }
+            else
+            {
+                lockImage[a].image= [UIImage imageNamed:@""];
             }
             
             MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
@@ -833,9 +839,13 @@
             
             if([data10[a] isEqualToString:@"1"])
             {
-                lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                lockImage.image = [UIImage imageNamed:@"premi_wall_ip4.png"];
-                [view3[a] addSubview:lockImage];
+                lockImage[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                lockImage[a].image = [UIImage imageNamed:@"premi_wall_ip4.png"];
+                [view3[a] addSubview:lockImage[a]];
+            }
+            else
+            {
+                lockImage[a].image= [UIImage imageNamed:@""];
             }
             
             MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
@@ -933,9 +943,13 @@
                 
                 if([data10[a] isEqualToString:@"1"])
                 {
-                    lockImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
-                    lockImage.image = [UIImage imageNamed:@"premi_wall_ip4.png"];
-                    [view3[a] addSubview:lockImage];
+                    lockImage[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
+                    lockImage[a].image = [UIImage imageNamed:@"premi_wall_ip4.png"];
+                    [view3[a] addSubview:lockImage[a]];
+                }
+                else
+                {
+                    lockImage[a].image= [UIImage imageNamed:@""];
                 }
                 
                 MovieLabelStills[a] = [[UILabel alloc] initWithFrame:CGRectMake(0,207-30, 150, 23)];
