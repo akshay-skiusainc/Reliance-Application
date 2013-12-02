@@ -1596,7 +1596,7 @@
                 lockImageStills[a].image=[UIImage imageNamed:@""];
             }
 
-            
+           //
             
             nX = nX+160;
             nY = nY+226;
