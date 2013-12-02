@@ -727,9 +727,13 @@
                       
             if ([data11[i] isEqualToString:@"1"])
             {
+                if (!lockImage[i]) {
+                    
                 lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 306,180)];
                 lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
                 [webwall[i] addSubview:lockImage[i]];
+                }
+
             }
             else{
                 lockImage[i].image = [UIImage imageNamed:@""];
@@ -820,9 +824,12 @@
             if ([data11[i] isEqualToString:@"1"])
             {
                 NSLog(@"dataPAID");
+                if (!lockImage[i]) {
+
                 lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 306,180)];
                 lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
                 [webwall[i] addSubview:lockImage[i]];
+                }
             }
             else{
                 lockImage[i].image = [UIImage imageNamed:@""];

@@ -900,9 +900,12 @@
             
             if ([data11[i] isEqualToString:@"1"])
             {
+                if (!lockImage[i]) {
+
                 lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
                 lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
                 [webwall[i] addSubview:lockImage[i]];
+                }
             }
             
             else
@@ -981,9 +984,12 @@
             
             if ([data11[i] isEqualToString:@"1"])
             {
+                if (!lockImage[i]) {
+
                 lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
                 lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
                 [webwall[i] addSubview:lockImage[i]];
+                }
             }
             else
             {
@@ -1107,9 +1113,12 @@
             
             if ([data11[i] isEqualToString:@"1"])
             {
+                if (!lockImage[i]) {
+
                 lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
                 lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
                 [webwall[i] addSubview:lockImage[i]];
+                }
             }
             else
             {
@@ -1191,9 +1200,12 @@
             
             if ([data11[i] isEqualToString:@"1"])
             {
+                if (!lockImage[i]) {
+
                 lockImage[i] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 315,176)];
                 lockImage[i].image = [UIImage imageNamed:@"premi_video.png"];
                 [webwall[i] addSubview:lockImage[i]];
+                }
             }
             else
             {
@@ -1321,9 +1333,12 @@
                 
                 if ([data15[a] isEqualToString:@"1"])
                 {
+                    if (!lockImageStills[a]) {
+
                     lockImageStills[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,207)];
                     lockImageStills[a].image = [UIImage imageNamed:@"premi_video.png"];
                     [view3[a] addSubview:lockImageStills[a]];
+                    }
                 }
                 else
                 {
@@ -1414,9 +1429,12 @@
                 
                 if ([data15[a] isEqualToString:@"1"])
                 {
+                    if (!lockImageStills[a]) {
+
                     lockImageStills[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0,0, 150,207)];
                     lockImageStills[a].image = [UIImage imageNamed:@"premi_video.png"];
                     [view3[a] addSubview:lockImageStills[a]];
+                    }
                 }
                 else
                 {
@@ -1565,9 +1583,12 @@
             
             if ([data15[a] isEqualToString:@"1"])
             {
+                if (!lockImageStills[a]) {
+
                 lockImageStills[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,207)];
                 lockImageStills[a].image = [UIImage imageNamed:@"premi_video.png"];
                 [view3[a] addSubview:lockImageStills[a]];
+                }
             }
             else
             {
@@ -1668,9 +1689,12 @@
             
             if ([data15[a] isEqualToString:@"1"])
             {
+                if (!lockImageStills[a]) {
+
                 lockImageStills[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,207)];
                 lockImageStills[a].image = [UIImage imageNamed:@"premi_video.png"];
                 [view3[a] addSubview:lockImageStills[a]];
+                }
             }
             else
             {

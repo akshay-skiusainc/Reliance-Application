@@ -617,9 +617,12 @@
             
             if([data10[a] isEqualToString:@"1"])
             {
+                if (!lockImage[a]) {
+
                 lockImage[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
                 lockImage[a].image = [UIImage imageNamed:@"premi_wall_ip4.png"];
                 [view3[a] addSubview:lockImage[a]];
+                }
             }
             else
             {
@@ -706,9 +709,12 @@
             
             if([data10[a] isEqualToString:@"1"])
             {
+                if (!lockImage[a]) {
+
                 lockImage[a] = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,200)];
                 lockImage[a].image = [UIImage imageNamed:@"premi_wall_ip4.png"];
                 [view3[a] addSubview:lockImage[a]];
+                }
             }
             else
             {
