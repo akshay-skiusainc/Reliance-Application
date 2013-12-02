@@ -733,11 +733,6 @@ else
         data13[j]= [actoAgent objectForKey:@"movie_id"];
 		NSLog(@"movie_id=%@",data13[j]);
 
-        
-        
-     
-
-		
 		j++;
 	}
     totalBannerImage = j;

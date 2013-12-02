@@ -45,6 +45,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{148, 200}, {20, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -134,6 +135,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 13}, {239, 9}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="313157988"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -227,6 +229,7 @@
 										<int key="NSvFlags">292</int>
 										<string key="NSFrame">{{5, 0}, {310, 490}}</string>
 										<reference key="NSSuperview" ref="377472285"/>
+										<reference key="NSNextKeyView" ref="965868179"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -235,16 +238,16 @@
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<object class="NSMutableString" key="IBUIText">
 											<bytes key="NS.bytes">QnkgY2xpY2tpbmcgIk9rYXkiLCB5b3UgYWNjZXB0IGFsbCB0aGUgdGVybXMgYW5kIGNvbmRpdGlvbnMg
-Z2l2ZW4gYmVsb3cuCgoqIFVzZXIgd2lsbCBiZSBjaGFyZ2VkIGEgb25lLXRpbWUgZmVlIHRvIGJlIGEg
+Z2l2ZW4gYmVsb3cuDQ0qIFVzZXIgd2lsbCBiZSBjaGFyZ2VkIGEgb25lLXRpbWUgZmVlIHRvIGJlIGEg
 cHJlbWl1bSBtZW1iZXIuIEJ5IHBheWluZyBmZWUsIHRoZSB1c2VyIHdpbGwgYmUgYWJsZSB0byBlbmpv
-eSBhbGwgQmVzaGFyYW0gcmVsYXRlZCBwcmVtaXVtIGNvbnRlbnQgb24gdGhpcyBkZXZpY2UgYXMgbWFu
-eSB0aW1lcyBhcyB0aGUgdXNlciB3YW50cyB1bnRpbCB0aGUgbW92aWUgQmVzaGFyYW0gaXMgcmVwbGFj
-ZWQgYnkgYSBuZXcgbW92aWUuIFRoZSBVc2VyIHdpbGwgYmUgYWJsZSB0byBzZWU6CuKAoglQcmVtaXVt
-IFZpZGVvcwrigKIJUHJlbWl1bSBXYWxscGFwZXJzCuKAoglQcmVtaXVtIEJlaGluZC10aGUtc2NlbmVz
-IGNsaXBzICYgSW1hZ2VzCuKAoglQcmVtaXVtIENoYXQKCk5vdGU6IFRoZSBmZWUgaXMgYmVpbmcgY2hh
-cmdlZCBmb3IgZW5qb3lpbmcgdGhpcyBjb250ZW50IG9uIHRoaXMgZGV2aWNlIG9ubHkuIFNoYXJpbmcg
-b3IgZG93bmxvYWRpbmcgdGhpcyBjb250ZW50IHRocm91Z2ggYW55IG1lYW5zIGlzIGlsbGVnYWwgYW5k
-IGFwcHJvcHJpYXRlIGFjdGlvbiBzaGFsbCBiZSB0YWtlbiBhZ2FpbnN0IHRoZSBvZmZlbmRlci4</bytes>
+eSBhbGwgcHJlbWl1bSBjb250ZW50IGF2YWlsYWJsZSBpbiB0aGlzIEFwcCwgYXMgbWFueSB0aW1lcyBh
+cyB0aGUgdXNlciB3YW50cy4gVGhlIFVzZXIgd2lsbCBiZSBhYmxlIHRvIHNlZToN4oCiIMKgIMKgUHJl
+bWl1bSBWaWRlb3MN4oCiIMKgIMKgUHJlbWl1bSBXYWxscGFwZXJzDeKAoiDCoCDCoFByZW1pdW0gQmVo
+aW5kLXRoZS1zY2VuZXMgY2xpcHMgJiBJbWFnZXMN4oCiIMKgIMKgUHJlbWl1bSBDaGF0DQ1Ob3RlOiBU
+aGUgZmVlIGlzIGJlaW5nIGNoYXJnZWQgZm9yIGVuam95aW5nIHRoaXMgY29udGVudCBvbiB0aGlzIGRl
+dmljZSBvbmx5LiBTaGFyaW5nIG9yIGRvd25sb2FkaW5nIHRoaXMgY29udGVudCB0aHJvdWdoIGFueSBt
+ZWFucyBpcyBpbGxlZ2FsIGFuZCBhcHByb3ByaWF0ZSBhY3Rpb24gc2hhbGwgYmUgdGFrZW4gYWdhaW5z
+dCB0aGUgb2ZmZW5kZXIuA</bytes>
 										</object>
 										<object class="NSColor" key="IBUITextColor">
 											<int key="NSColorSpace">1</int>
@@ -307,7 +310,7 @@ IGFwcHJvcHJpYXRlIGFjdGlvbiBzaGFsbCBiZSB0YWtlbiBhZ2FpbnN0IHRoZSBvZmZlbmRlci4</byt
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{108, 123}, {90, 44}}</string>
 								<reference key="NSSuperview" ref="887636151"/>
-								<reference key="NSNextKeyView" ref="377472285"/>
+								<reference key="NSNextKeyView" ref="85643503"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="433165044"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -328,6 +331,7 @@ IGFwcHJvcHJpYXRlIGFjdGlvbiBzaGFsbCBiZSB0YWtlbiBhZ2FpbnN0IHRoZSBvZmZlbmRlci4</byt
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{201, 123}, {119, 45}}</string>
 								<reference key="NSSuperview" ref="887636151"/>
+								<reference key="NSNextKeyView" ref="377472285"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="433165044"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -360,7 +364,7 @@ IGFwcHJvcHJpYXRlIGFjdGlvbiBzaGFsbCBiZSB0YWtlbiBhZ2FpbnN0IHRoZSBvZmZlbmRlci4</byt
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 416}}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView" ref="313157988"/>
+				<reference key="NSNextKeyView" ref="887636151"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -638,7 +642,7 @@ IGFwcHJvcHJpYXRlIGFjdGlvbiBzaGFsbCBiZSB0YWtlbiBhZ2FpbnN0IHRoZSBvZmZlbmRlci4</byt
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="cancel.png">{156, 79}</string>
-			<string key="close1.png">{31, 34}</string>
+			<string key="close1.png">{38, 38}</string>
 			<string key="okay.png">{156, 79}</string>
 			<string key="restorebtn.png">{119, 45}</string>
 			<string key="wall_title_border.jpg">{280, 2}</string>
